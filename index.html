@@ -33,6 +33,10 @@
         .cell:hover {
             background-color: #ddd;
         }
+        .message {
+            margin-top: 20px;
+            font-size: 1.5rem;
+        }
     </style>
 </head>
 <body>
@@ -47,22 +51,46 @@
         <div class="cell" data-index="7"></div>
         <div class="cell" data-index="8"></div>
     </div>
+    <div class="message"></div>
     <script>
         const container = document.querySelector('.container');
+        const message = document.querySelector('.message');
         let currentPlayer = 'X';
-        let moves = [];
+        let playerMoves = { 'X': [], 'O': [] };
+        const winningCombinations = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        function checkWin(player) {
+            const indices = playerMoves[player].map(cell => parseInt(cell.getAttribute('data-index')));
+            return winningCombinations.some(combination => 
+                combination.every(index => indices.includes(index))
+            );
+        }
 
         container.addEventListener('click', (e) => {
-            if (e.target.classList.contains('cell') && !e.target.textContent) {
+            if (e.target.classList.contains('cell') && !e.target.textContent && !message.textContent) {
                 e.target.textContent = currentPlayer;
-                moves.push(e.target);
+                playerMoves[currentPlayer].push(e.target);
 
-                if (moves.length > 3) {
-                    const firstMove = moves.shift();
+                if (playerMoves[currentPlayer].length > 3) {
+                    const firstMove = playerMoves[currentPlayer].shift();
                     firstMove.textContent = '';
                 }
 
-                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                if (checkWin(currentPlayer)) {
+                    message.textContent = `__Player ${currentPlayer} wins!`;
+                    container.style.pointerEvents = 'none';
+                } else {
+                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                }
             }
         });
     </script>
