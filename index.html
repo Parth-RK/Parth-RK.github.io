@@ -3,16 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parth Katke</title>
-    <link rel="stylesheet" href="style.css"\>
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            cursor: pointer;
+            border: 2px solid #333;
+        }
+        .cell:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 <body>
-    <script src="index.js"></script>
-    <nav id="desktop-nav">  
-        <div class="logo"></div>
-    </nav>
-     Hi, This is an attempt to build a personal portfolio website.
-    
+    <div class="container">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+    </div>
+    <script>
+        const container = document.querySelector('.container');
+        let currentPlayer = 'X';
+        let moves = [];
+
+        container.addEventListener('click', (e) => {
+            if (e.target.classList.contains('cell') && !e.target.textContent) {
+                e.target.textContent = currentPlayer;
+                moves.push(e.target);
+
+                if (moves.length > 3) {
+                    const firstMove = moves.shift();
+                    firstMove.textContent = '';
+                }
+
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            }
+        });
+    </script>
 </body>
 </html>
-hello world 
