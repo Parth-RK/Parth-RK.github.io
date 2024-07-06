@@ -4,95 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-template-rows: repeat(3, 100px);
-            gap: 5px;
-        }
-        .cell {
-            width: 100px;
-            height: 100px;
-            background-color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            cursor: pointer;
-            border: 2px solid #333;
-        }
-        .cell:hover {
-            background-color: #ddd;
-        }
-        .message {
-            margin-top: 20px;
-            font-size: 1.5rem;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="cell" data-index="0"></div>
-        <div class="cell" data-index="1"></div>
-        <div class="cell" data-index="2"></div>
-        <div class="cell" data-index="3"></div>
-        <div class="cell" data-index="4"></div>
-        <div class="cell" data-index="5"></div>
-        <div class="cell" data-index="6"></div>
-        <div class="cell" data-index="7"></div>
-        <div class="cell" data-index="8"></div>
+    <div>
+        <div class="container">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+        <div class="message"></div>
+        <div class="turn-indicator">Current Player: <span id="currentPlayer">X</span></div>
+        <button class="button" onclick="resetGame()">Restart Game</button>
     </div>
-    <div class="message"></div>
-    <script>
-        const container = document.querySelector('.container');
-        const message = document.querySelector('.message');
-        let currentPlayer = 'X';
-        let playerMoves = { 'X': [], 'O': [] };
-        const winningCombinations = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6]
-        ];
-
-        function checkWin(player) {
-            const indices = playerMoves[player].map(cell => parseInt(cell.getAttribute('data-index')));
-            return winningCombinations.some(combination => 
-                combination.every(index => indices.includes(index))
-            );
-        }
-
-        container.addEventListener('click', (e) => {
-            if (e.target.classList.contains('cell') && !e.target.textContent && !message.textContent) {
-                e.target.textContent = currentPlayer;
-                playerMoves[currentPlayer].push(e.target);
-
-                if (playerMoves[currentPlayer].length > 3) {
-                    const firstMove = playerMoves[currentPlayer].shift();
-                    firstMove.textContent = '';
-                }
-
-                if (checkWin(currentPlayer)) {
-                    message.textContent = `__Player ${currentPlayer} wins!`;
-                    container.style.pointerEvents = 'none';
-                } else {
-                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                }
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
