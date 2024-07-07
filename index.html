@@ -1,26 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Games Hub</h1>
-    </header>
-    <main>
-        <section class="game-option">
-            <h2>Tic Tac Toe</h2>
-            <a href="tic-tac-toe\tic-tac-toe.html" class="game-link">Play Now</a>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Games Hub</p>
-    </footer>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Parth Katke</title>
+    </head>
+    <body>
+        <!-- OVERLAY -->
+        <div class="overlay first"></div>
+        <div class="overlay second"></div>
+        <div class="overlay third"></div>
+
+        <!-- HEADER -->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="tic-tac-toe/tic-tac-toe.html" class="nav__link">Fun Zone</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">Blog</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <ion-icon name="menu"></ion-icon>
+                </div>
+            </nav>
+        </header>
+
+        <!-- MAIN -->
+        <main class="l-main bd-grid">
+            <div class="home">
+                <div class="home__information">
+                    <span class="home__pressent anime-text">Hello, My name is</span>
+                    <h1 class="home__title anime-text">Parth R. Katke</h1>
+                    <span class="home__skill anime-text">Web Developer</span>
+                    
+                    <div>
+                        <a href="#" class="home__button anime-text">DOWNLOAD CV</a>
+                    </div>
+                </div>
+
+                <div class="home__img">
+                    <img src="assets/img/img.jpg" alt="">
+                </div>
+                
+                <div class="home__social">
+                    <a href="https://github.com/Parth-RK" target="_blank">
+                        <ion-icon name="logo-github" class="home__social-icon"></ion-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/in/parth-rk" target="_blank">
+                        <ion-icon name="logo-linkedin" class="home__social-icon"></ion-icon>
+                    </a>
+                    <a href="mailto:" target="katkeparth@gmail.com">
+                        <ion-icon name="mail" class="home__social-icon"></ion-icon>
+                    </a>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- GSAP -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+
+        <!-- MAIN -->
+        <script src="script.js"></script>
+    
+        <!-- ICONS -->
+        <script  type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    </body>
 </html>
-
-
-
