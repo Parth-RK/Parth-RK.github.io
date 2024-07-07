@@ -36,7 +36,7 @@ The Landing Page is designed to provide an engaging introduction to your project
 1. **Clone the repository:**
    ```sh
    git clone https://github.com/yourusername/your-repo.git
-   cd your-repo/landing-page
+   cd your-repo
    ```
 2. **Install dependencies:**
    If using plain HTML/CSS/JS, skip this step. For frameworks, run:
