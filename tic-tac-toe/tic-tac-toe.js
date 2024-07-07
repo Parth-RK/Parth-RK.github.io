@@ -1,9 +1,15 @@
 const container = document.querySelector('.container');
 const message = document.querySelector('.message');
+const xWinsElement = document.getElementById('xWins');
+const oWinsElement = document.getElementById('oWins');
+
+let xWins = 0;
+let oWins = 0;
 let currentPlayer = 'X';
 let playerMoves = { 'X': [], 'O': [] };
 let gameHistory = [];
 let gameOver = false;
+
 const winningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -33,6 +39,7 @@ function resetGame() {
         cell.classList.remove('fading', 'X', 'O');
     });
     document.getElementById('currentPlayer').textContent = currentPlayer;
+    
 }
 
 function undoMove() {
@@ -51,6 +58,8 @@ function undoMove() {
 
         message.textContent = '';
         container.style.pointerEvents = 'auto';
+
+
         
     }
     else{
@@ -59,19 +68,37 @@ function undoMove() {
         const cell = lastMove.cell;
         const player = lastMove.player;
 
-        
         cell.textContent = '';
         cell.classList.remove(player);
 
-        
         playerMoves[player] = playerMoves[player].filter((cell) => cell !== lastMove.cell);
 
         message.textContent = '';
         container.style.pointerEvents = 'auto';
         gameOver = false;
+
+        if (currentPlayer === 'X') {
+            xWins--;
+            xWinsElement.innerText = xWins;
+        } else {
+            oWins--;
+            oWinsElement.innerText = oWins;
+        }
         }
     }
 }
+
+
+function updateScore() {
+    if (currentPlayer === 'X') {
+        xWins++;
+        xWinsElement.innerText = xWins;
+    } else {
+        oWins++;
+        oWinsElement.innerText = oWins;
+    }
+}
+
 
 container.addEventListener('click', (e) => {
     if (e.target.classList.contains('cell') && !e.target.textContent && !message.textContent) {
@@ -103,6 +130,7 @@ container.addEventListener('click', (e) => {
             message.textContent = `Player ${currentPlayer} wins!`;
             container.style.pointerEvents = 'none';
             gameOver = true;
+            updateScore();
         } else {
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             document.getElementById('currentPlayer').textContent = currentPlayer;

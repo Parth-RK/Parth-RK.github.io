@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="tic-tac-toe.css">
 </head>
 <body>
-    <div>
+    <header>
+        <h1>Tic Tac Toe</h1>
+        <h2>Welcome to the classic game of Tic Tac Toe with an infinite touch!</h2>
+        <p> Remember those times when we used to play tic-tac-toe on the back of our notebook? Well, tic-tac-toe got digitized but the problem of running out of boxes and games ending in draw still persisted. Not anymore! Because here's an infinite version of it, where only one player can walk out as the winner. Let it be decided then.</p>
+        <h2>Scroll down to start playing.</h2>
+    </header>
+    <section class="game-container">
         <div class="container">
             <div class="cell" data-index="0"></div>
             <div class="cell" data-index="1"></div>
@@ -21,9 +27,15 @@
         </div>
         <div class="message"></div>
         <div class="turn-indicator">Current Player: <span id="currentPlayer">X</span></div>
-        <button class="button" onclick="undoMove()">Undo</button>
-        <button class="button" onclick="resetGame()">Restart Game</button>
-    </div>
+        <div class="scoreboard">
+            <p>X Wins: <span id="xWins">0</span></p>
+            <p>O Wins: <span id="oWins">0</span></p>
+        </div>
+        <div class="buttons">
+            <button class="undo" onclick="undoMove()">Undo</button>
+            <button class="reset" onclick="resetGame()">Reset</button>
+        </div>
+    </section>
     <script src="tic-tac-toe.js"></script>
 </body>
 </html>
