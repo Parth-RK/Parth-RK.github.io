@@ -1,14 +1,22 @@
+:root {
+    --first-color: #00A380;
+    --black-color: #000;
+    --white-color: #FFFFFF;
+    --reset-end-color: #a11039;
+  }
+
 body {
     font-family: 'Arial', sans-serif;
-    color: #fff;
+    color: #ffffff;
     margin: 0;
-    background-color: #0c0c0c;
+    background-color: #0C356A;
 }
 
 header {
     text-align: center;
-    padding: 150px 20px;
-    background-color: #373737;
+    padding: 100px 200px;
+    background-color: #021526;
+    background-image: linear-gradient(to right, var(--black-color), var(--first-color));
     
 }
 
@@ -16,13 +24,14 @@ header h1 {
     font-size: 2.5rem;
     margin: 0;
     padding: 20px;
-    color: #df3dff
+    color: #D5FFD0
 }
 
 header h2 {
     font-size: 1.6rem;
     margin: 0;
-    color: #d6f349
+    color: #8df781;
+    
 }
 
 header p {
@@ -81,7 +90,8 @@ header p {
     padding: 10px 20px;
     font-size: 1rem;
     color: #ffffff;
-    background-color: #007BFF;
+    background-image: -webkit-gradient(linear, left top, right top, from(var(--black-color)), to(var(--first-color)));
+    background-image: linear-gradient(to right, var(--black-color), var(--first-color));
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -94,7 +104,8 @@ header p {
     padding: 10px 20px;
     font-size: 1rem;
     color: #ffffff;
-    background-color: #ff0000;
+    background-image: -webkit-gradient(linear, right top, left top, from(var(--black-color)), to(var(--reset-end-color)));
+    background-image: linear-gradient(to left, var(--black-color), var(--reset-end-color));
     border: none;
     border-radius: 10px;
     cursor: pointer;

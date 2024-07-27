@@ -1,15 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-/*----- VARIABLES CSS Y SASS -----*/
-/*Varibles sass*/
-/*Variables css*/
-/*Colores*/
+
 :root {
   --first-color: #4E1116;
   --black-color: #000;
   --white-color: #FFF;
 }
 
-/*Fuente y tipografia*/
+
 :root {
   --body-font: 'Poppins', sans-serif;
   --h1-font-size: 2.5rem;
@@ -27,7 +24,7 @@
   }
 }
 
-/*z index*/
+
 :root {
   --z-back: -10;
   --z-normal: 1;
@@ -36,7 +33,7 @@
   --z-modal: 1000;
 }
 
-/*----- BASE -----*/
+
 *, ::before, ::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -70,7 +67,7 @@ img {
   height: auto;
 }
 
-/*----- LAYOUT -----*/
+
 .bd-grid {
   max-width: 1200px;
   margin-left: 1rem;
@@ -86,8 +83,7 @@ img {
   background-color: var(--black-color);
 }
 
-/*----- PAGES -----*/
-/*Nav*/
+
 .nav {
   height: 3rem;
   display: -webkit-box;
@@ -154,12 +150,12 @@ img {
   cursor: pointer;
 }
 
-/*Aparecer menu*/
+
 .show {
   top: 3rem;
 }
 
-/*Home*/
+
 .l-main {
   height: calc(100vh - 3rem);
   background-color: var(--black-color);
@@ -238,7 +234,7 @@ img {
   color: var(--first-color);
 }
 
-/*----- MEDIA QUERIES -----*/
+
 @media screen and (min-width: 768px) {
   body {
     margin: 0;
@@ -300,7 +296,7 @@ img {
   }
 }
 
-/*ANIMATE*/
+
 .overlay {
   position: absolute;
   top: 0;
