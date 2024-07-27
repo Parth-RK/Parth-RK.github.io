@@ -67,8 +67,8 @@ The Tic Tac Toe game is a classic two-player game where players take turns marki
 ### Setup
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/your-repo.git
-   cd your-repo/tic-tac-toe
+   git clone https://github.com/Parth-RK/Parth-RK.github.io.git
+   cd Parth-RK.github.io/tic-tac-toe
    ```
 2. **Install dependencies:**
    If using plain HTML/CSS/JS, skip this step. For frameworks, run:
