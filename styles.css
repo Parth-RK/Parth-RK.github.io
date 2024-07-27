@@ -2,6 +2,7 @@
 
 :root {
   --first-color: #4E1116;
+  --second-color:#ff000d;
   --black-color: #000;
   --white-color: #FFF;
 }
@@ -43,6 +44,7 @@ body {
   margin: 3rem 0 0 0;
   font-family: var(--body-font);
   background-color: var(--black-color);
+  background-image: linear-gradient(var(--black-color), var(--first-color));
   color: var(--white-color);
   font-weight: 700;
   overflow: hidden;
@@ -159,6 +161,7 @@ img {
 .l-main {
   height: calc(100vh - 3rem);
   background-color: var(--black-color);
+  background-image: linear-gradient(var(--black-color), var(--first-color));
 }
 
 .home {
@@ -205,6 +208,10 @@ img {
   background-image: linear-gradient(to right, var(--black-color), var(--first-color));
 }
 
+.home__button:hover {
+  background-image: linear-gradient(to right, var(--black-color), var(--second-color));
+}
+
 .home__img {
   position: absolute;
   right: 0;
@@ -222,16 +229,18 @@ img {
       -ms-flex-direction: column;
           flex-direction: column;
   padding-bottom: 1rem;
+  
 }
 
 .home__social-icon {
   margin-bottom: 2rem;
   font-size: 1.33rem;
   cursor: pointer;
+  color:#fff;
 }
 
 .home__social-icon:hover {
-  color: var(--first-color);
+  color: var(--second-color);
 }
 
 
