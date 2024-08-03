@@ -35,6 +35,10 @@ header h2 {
     
 }
 
+h2.blank-space {
+    margin-bottom: 1000px;
+  }
+
 header p {
     font-size: 1.2rem;
     margin: 10px 0 0;
@@ -84,6 +88,7 @@ header p {
 
 .buttons {
     margin-top: -30px;
+    margin-bottom: 200px;
 }
 .undo{
     display: inline-block;
