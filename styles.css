@@ -188,9 +188,33 @@ img {
 .home__pressent {
   font-size: var(--small-font-size);
 }
+.home__pressent2 {
+  font-size: var(--large-font-size);
+  animation: fadeOut 7s forwards;
+}
 
 .home__title {
   font-size: var(--h1-font-size);
+  opacity: 0;
+  animation: fadeIn 2s 5.5s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .home__skill {
