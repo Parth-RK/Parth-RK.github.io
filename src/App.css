@@ -1,14 +1,12 @@
+/* src/styles/App.css */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 :root {
   --first-color: #4E1116;
-  --second-color:#ff000d;
+  --second-color: #ff000d;
   --black-color: #000;
   --white-color: #FFF;
-}
-
-
-:root {
+  
   --body-font: 'Poppins', sans-serif;
   --h1-font-size: 2.5rem;
   --h2-font-size: 1rem;
@@ -178,6 +176,22 @@ img {
   height: 100%;
   font-weight: 700;
 }
+.about {
+  display: -ms-grid;
+  display: -ms-grid;
+  row-gap: 2.3rem;
+  height: 100%;
+  font-weight: 700;
+  margin-bottom: auto;
+}
+.project {
+  margin-top: auto;
+  display: -ms-grid;
+  display: -ms-grid;
+  row-gap: 2.3rem;
+  height: 100%;
+  font-weight: 700;  
+}
 
 .home__information {
   padding-left: 1.5rem;
@@ -190,13 +204,13 @@ img {
 }
 .home__pressent2 {
   font-size: var(--large-font-size);
-  animation: fadeOut 7s forwards;
+  animation: fadeOut 3s forwards;
 }
 
 .home__title {
   font-size: var(--h1-font-size);
   opacity: 0;
-  animation: fadeIn 2s 5.5s forwards;
+  animation: fadeIn 0s 2.5s forwards;
 }
 
 @keyframes fadeOut {
