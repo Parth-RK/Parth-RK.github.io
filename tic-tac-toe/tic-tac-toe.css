@@ -1,47 +1,81 @@
 :root {
-    --first-color: #00A380;
-    --black-color: #000;
-    --white-color: #FFFFFF;
-    --reset-end-color: #a11039;
-  }
+    --primary-color: #297268;
+    --primary-variant-color: #3700B3;
+    --secondary-color: #03DAC6;
+    --background-color: #082923;
+    --surface-color: #084039;
+    --error-color: #CF6679;
+    --on-primary-color: #FFFFFF;
+    --on-secondary-color: #000000;
+    --on-background-color: #FFFFFF;
+    --on-surface-color: #FFFFFF;
+    --on-error-color: #000000;
+}
 
 body {
-    font-family: 'Arial', sans-serif;
-    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    color: var(--on-background-color);
     margin: 0;
-    background-color: #0C356A;
-    background-image: linear-gradient(to right, var(--black-color), var(--first-color));
+    background-color: var(--background-color);
+}
+
+.description {
+    max-width: min(90%, 600px);
+    margin: 20px auto;
+    line-height: 1.6;
+    font-size: clamp(16px, 4vw, 30px);
+    color: var(--on-surface-color);
+    padding: 20px;
+    border-radius: 12px;
+    background-color: var(--surface-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header {
     text-align: center;
-    padding: 100px 200px;
-    background-color: #021526;
-    background-image: linear-gradient(to right, var(--black-color), var(--first-color));
-    
+    padding: clamp(20px, 5vh, 50px) 20px;
+    background-color: var(--primary-color);
+    color: var(--on-primary-color);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
-header h1 {
-    font-size: 2.5rem;
+h1, h2 {
     margin: 0;
-    padding: 20px;
-    color: #D5FFD0
+    font-weight: 500;
 }
 
-header h2 {
-    font-size: 1.6rem;
-    margin: 0;
-    color: #8df781;
-    
+h1 {
+    font-size: clamp(1.9rem, 7vw, 5.5rem);
+    font-weight: bolder;
 }
 
-h2.blank-space {
-    margin-bottom: 900px;
-  }
+h2 {
+    margin-top: 2rem;
+    font-size: clamp(1.3rem, 4vw, 2.3rem);
+    font-weight: bold;
+    color: #d6fffc;
+}
 
-header p {
-    font-size: 1.2rem;
-    margin: 10px 0 0;
+.blank-space {
+    margin-bottom: min(75vh, 400px);
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 24px;
+    background-color: var(--secondary-color);
+    color: var(--on-secondary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: var(--primary-variant-color);
 }
 
 .game-container {
@@ -53,104 +87,87 @@ header p {
 }
 
 .container {
+    margin-top: min(50vh, 300px);
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, minmax(60px, 100px));
+    grid-template-rows: repeat(3, minmax(60px, 100px));
     gap: 5px;
-    background-color: #ffffff;
     padding: 10px;
     border-radius: 10px;
 }
 
 .cell {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    background-color: #00ffc8;
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    justify-content: center;
+    background-color: var(--surface-color);
+    color: var(--on-surface-color);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .cell:hover {
-    background-color: #817e7e;
+    background-color: var(--primary-variant-color);
 }
 
 .message {
+    text-align: center;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     margin-top: 20px;
-    font-size: 1.5rem;
+    color: var(--on-surface-color);
+}
+
+.turn-indicator, .scoreboard {
+    font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+    margin: 10px 0;
     text-align: center;
 }
 
 .buttons {
-    margin-top: -30px;
-    margin-bottom: 200px;
-}
-.undo{
-    display: inline-block;
-    margin: 20px 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #ffffff;
-    background-image: -webkit-gradient(linear, left top, right top, from(var(--black-color)), to(var(--first-color)));
-    background-image: linear-gradient(to right, var(--black-color), var(--first-color));
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.reset{
-    display: inline-block;
-    margin: 20px 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #ffffff;
-    background-image: -webkit-gradient(linear, right top, left top, from(var(--black-color)), to(var(--reset-end-color)));
-    background-image: linear-gradient(to left, var(--black-color), var(--reset-end-color));
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-@media (hover: hover){
-    .undo:hover {
-        background-color: #013072;
+/* Media Queries for different screen sizes */
+@media screen and (max-width: 480px) {
+    .container {
+        margin-top: 40vh;
     }
     
-    .reset:hover {
-        background-color: #7e0000;
+    .blank-space {
+        margin-bottom: 50vh;
     }
 }
 
-.cell.X {
-    color: #ff0000;
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .container {
+        margin-top: 45vh;
+    }
+    
+    .blank-space {
+        margin-bottom: 60vh;
+    }
 }
 
-.cell.O {
-    color: #001eff;
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        margin-top: 50vh;
+    }
+    
+    .blank-space {
+        margin-bottom: 70vh;
+    }
 }
 
-.fading {
+.cell.fading {
     opacity: 0.5;
-}
-
-.turn-indicator {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    text-align: center;
-    color: #fff;
-}
-
-.scoreboard {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin: 20px 0;
-    font-size: 1.2rem;
-    color: #ffffff;
+    transition: opacity 0.3s ease;
 }

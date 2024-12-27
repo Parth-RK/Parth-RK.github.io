@@ -9,8 +9,10 @@
 <body>
     <header>
         <h1>Tic Tac Toe</h1>
-        <h2>Welcome to the classic game of Tic Tac Toe with an infinite touch!</h2>
-        <p> Remember those times when we used to play tic-tac-toe on the back of our notebook? Well, tic-tac-toe got digitized but the problem of running out of boxes and games ending in draw still persisted. Not anymore! Because here's an infinite version of it, where only one player can walk out as the winner. Let it be decided then.</p>
+        <p class="description"> Remember the days of scribbling tic-tac-toe on the back of a notebook?</p>
+        <p class="description"> While the classic game has gone digital, the frustration of running out of space and ending in endless draws remains the same.</p>
+        <p class="description"> But not anymore! Say hello to the infinite version of tic-tac-toe, where the game doesn’t stop until there’s a clear winner.</p>
+        <p class="description"> It’s time to settle the score—let the ultimate showdown begin!</p>
         <h2 class="blank-space">Scroll down to start playing.</h2>
     </header>
     <section class="game-container">
@@ -35,6 +37,7 @@
             <button class="undo" onclick="undoMove()">Undo</button>
             <button class="reset" onclick="resetGame()">Reset</button>
         </div>
+        <div class="blank-space"></div>
     </section>
     <script src="tic-tac-toe.js"></script>
 </body>

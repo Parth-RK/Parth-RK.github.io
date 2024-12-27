@@ -15,15 +15,13 @@
         <!-- HEADER -->
         <header class="l-header">
             <nav class="nav bd-grid">
-                
-
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
-                        <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
-                        <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                         <li class="nav__item"><a href="tic-tac-toe/tic-tac-toe.html" class="nav__link">Fun Zone</a></li>
-                        <li class="nav__item"><a href="#" class="nav__link">Blog</a></li>
-                        <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
                     </ul>
                 </div>
 
@@ -34,23 +32,19 @@
         </header>
 
         <!-- MAIN -->
-        <main class="l-main bd-grid">
-            <div class="home">
+        <main class="l-main">
+            <!-- Home Section -->
+            <section id="home" class="home bd-grid">
                 <div class="home__information">
-                    <span class="home__pressent anime-text">Hi, Welcome! As you know, I'm   </span>
-                    <span class="home__pressent2 anime-text">if you don't know me, how tf you got here.  </span>
+                    <span class="home__pressent anime-text">Hi, Welcome! As you know, I'm</span>
                     <h1 class="home__title anime-text">Parth R. Katke</h1>
                     <span class="home__skill anime-text">A Software Developer</span>
                     
                     <div>
-                        <a href="wait-till-i-figure-how-to-share-it-without-drive" class="home__button anime-text">DOWNLOAD CV</a>
+                        <a href="#" class="home__button anime-text">DOWNLOAD CV</a>
                     </div>
                 </div>
 
-                <div class="home__img">
-                    <img src="assets/img/img.jpg" alt="">
-                </div>
-                
                 <div class="home__social">
                     <a href="https://github.com/Parth-RK" target="_blank">
                         <ion-icon name="logo-github" class="home__social-icon"></ion-icon>
@@ -58,12 +52,129 @@
                     <a href="https://www.linkedin.com/in/parth-rk" target="_blank">
                         <ion-icon name="logo-linkedin" class="home__social-icon"></ion-icon>
                     </a>
-                    <a href="mailto:" target="katkeparth@gmail.com">
+                    <a href="mailto:katkeparth@gmail.com">
                         <ion-icon name="mail" class="home__social-icon"></ion-icon>
                     </a>
                 </div>
+            </section>
 
-            </div>
+            <!-- About Section -->
+            <section id="about" class="about bd-grid">
+                <div class="about__content anime-text">
+                    <h2 class="section__title">About Me</h2>
+                    <p>Hello! I'm Parth, a passionate software developer with expertise in building practical, efficient, and user-friendly applications. I specialize in Flutter, Python, Rust, and C++, focusing on creating solutions that are simple yet powerful.</p>
+                    <p>With experience working on projects like "Dear Diary" for personal journaling, "Emotion Analysis using AI" for inferring emotions in text and "Finance Management App" for keeping track of your assets. I am committed to continuous learning and improving my craft.</p>
+                    <p>When I'm not coding, you can find me exploring the world of cybersecurity and AI or learning new technologies to stay ahead in the ever-evolving tech landscape.</p>
+                </div>
+                <div class="about__img anime-text">
+                    <img src="/api/placeholder/400/400" alt="Profile Image">
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="projects bd-grid">
+                <h2 class="section__title anime-text">My Projects</h2>
+                <div class="projects__container">
+                    <div class="project__card anime-text">
+                        <img src="./assets/pro1.jpg" alt="Project 1" class="project__image">
+                        <div class="project__content">
+                            <h3>Finance Management System</h3>
+                            <div class="project__tags">
+                                <span class="project__tag">Python</span>
+                                <span class="project__tag">Tkinter</span>
+                                <span class="project__tag">MySQL</span>
+                            </div>
+                            <p>A financial management system designed to streamline tracking of assets, liabilities, and transactions. This project utilizes Python’s tkinter for a user-friendly GUI and MySQL for efficient data management. The system allows users to generate balance sheets, track transaction dates, and manage finances effectively, showcasing my ability to integrate backend databases with frontend interfaces for seamless functionality.</p>
+                        </div>
+                    </div>
+                    <div class="project__card anime-text">
+                        <img src="./assets/pro2.jpg" alt="Project 2" class="project__image">
+                        <div class="project__content">
+                            <h3>Emotion Analysis using ML</h3>
+                            <div class="project__tags">
+                                <span class="project__tag">Python</span>
+                                <span class="project__tag">Naive-Bayes</span>
+                                <span class="project__tag">Logistic Regression</span>
+                                <span class="project__tag">pandas</span>
+                                <span class="project__tag">matplotlib</span>
+                                <span class="project__tag">textblob</span>
+                            </div>                            
+                            <p>It is a machine learning model capable of classifying 13 emotions from text data. Used Naive-Bayes and Logistic Regression algorithms to predict emotions based on input data, and utilised Python libraries like pandas for data manipulation, matplotlib for data visualization, and textblob for natural language processing.</p>
+                        </div>
+                    </div>
+                    <div class="project__card anime-text">
+                        <img src="./assets/pro3a.jpg" alt="Project 3" class="project__image">
+                        <div class="project__content">
+                            <h3>Dear Diary</h3>
+                            <div class="project__tags">
+                                <span class="project__tag">Flutter</span>
+                                <span class="project__tag">HiveDB</span> 
+                            </div>
+                            <p>Dear Diary is a Flutter-based application designed for personal reflection and creativity. It enables users to create, update, delete, recover and organize diary entries by date, with customizable themes and offline support. The app also features a browse function to easily locate entries at a specific date.</p>
+                        </div>
+                    </div>
+                    <div class="project__card anime-text">
+                        <img src="./assets/pro4.jpg" alt="Project 4" class="project__image">
+                        <div class="project__content">
+                            <h3>Weather & Insights Application</h3>
+                            <div class="project__tags">
+                                <span class="project__tag">Python</span>
+                                <span class="project__tag">Flask</span>
+                                <span class="project__tag">API</span>
+                                <span class="project__tag">HTML5</span>
+                                <span class="project__tag">CSS</span>
+                                <span class="project__tag">JavaScript</span>
+                            </div>
+                            <p>An intuitive application that provides real-time weather forecasts using the Weather API, along with stock market updates and the latest news. It leverages reliable APIs to deliver data in a clean, user-friendly interface for a seamless experience.</p>
+
+                        </div>
+                    </div>
+                    <!-- <div class="project__card anime-text">
+                        <img src="./assets/pro5.jpg" alt="Project 5" class="project__image">
+                        <div class="project__content">
+                            <h3>Weather Dashboard</h3>
+                            <p>A weather forecasting application that provides real-time weather data and interactive visualizations using Weather API.</p>
+                        </div>
+                    </div>
+                    <div class="project__card anime-text">
+                        <img src="./assets/pro6.jpg" alt="Project 6" class="project__image">
+                        <div class="project__content">
+                            <h3>Weather Dashboard</h3>
+                            <p>A weather forecasting application that provides real-time weather data and interactive visualizations using Weather API.</p>
+                        </div>
+                    </div> -->
+                    <div class="project__card anime-text">
+                        <img src="./assets/pro7.png" alt="Project 7" class="project__image">
+                        <div class="project__content">
+                            <h3>Min Game</h3>
+                            <div class="project__tags">
+                                <span class="project__tag">Python</span>
+                                <span class="project__tag">pygame</span>
+                            </div>                            
+                            <p>A strategic game developed using Python’s pygame library, where players compete to reach a score of 100. The game challenges players to think critically and strategize their moves, providing an engaging experience while developing an understanding of game logic.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="contact bd-grid">
+                <h2 class="section__title anime-text">Get In Touch</h2>
+                <div class="contact__content anime-text">
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+                </div>
+                <div class="contact__form-container">
+                    <form class="contact__form" id="contactForm" onsubmit="sendEmail(event)">
+                        <div class="form__group">
+                            <input type="email" id="email" name="email" required class="form__input" placeholder="Your Email">
+                        </div>
+                        <div class="form__group">
+                            <textarea id="message" name="message" required class="form__input" placeholder="Your Message" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="form__button">Send Message</button>
+                    </form>
+                </div>
+            </section>
         </main>
 
         <!-- GSAP -->
