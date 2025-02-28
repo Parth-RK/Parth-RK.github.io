@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
 
 :root {
   /* Colors */
   --first-color: #4E1116;
-  --second-color: #ff000d;
+  --second-color: #9999ff;
   --black-color: #000;
   --white-color: #FFF;
   
@@ -15,13 +17,18 @@
   --light-text: var(--white-color);
   --card-background: rgba(0, 0, 0, 0.2);
   
-  /* Typography */
+  /* Typography - Add futuristic fonts */
   --body-font: 'Poppins', sans-serif;
-  --heading-font: 'Poppins', sans-serif;
+  --heading-font: 'Orbitron', sans-serif;
+  --secondary-heading-font: 'Rajdhani', sans-serif;
   --h1-font-size: 2.5rem;
   --h2-font-size: 1rem;
   --normal-font-size: 0.93rem;
   --small-font-size: 0.81rem;
+  
+  /* Text shadow for better readability */
+  --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  --glow-effect: 0 0 8px rgba(255, 0, 13, 0.5);
   
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -63,16 +70,24 @@ body {
   margin: 0;
   padding-top: 4rem; 
   font-family: var(--body-font);
-  background-color: var(--background-color);
-  background-image: linear-gradient(var(--black-color), var(--secondary-color));
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+  background-image: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(78, 17, 22, 0.4) 100%);
   color: var(--text-color);
   font-weight: 500;
   overflow-x: hidden;
   min-height: 100vh;
+  text-shadow: var(--text-shadow); /* Add text shadow for better readability */
+  letter-spacing: 0.3px; /* Slightly increase letter spacing for better readability */
 }
 
-h1, h2 {
+/* Updated heading styles with futuristic fonts */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
   margin: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 ul {
@@ -143,6 +158,12 @@ img {
 
 section {
   padding: var(--spacing-xl) 0;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle divider */
+}
+
+section:last-of-type {
+  border-bottom: none;
 }
 
 .section-title {
@@ -151,6 +172,10 @@ section {
   margin-bottom: var(--spacing-xl);
   color: var(--text-color);
   position: relative;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: var(--heading-font);
+  text-shadow: var(--text-shadow);
 }
 
 .section-title::after {
@@ -163,6 +188,16 @@ section {
   right: 0;
   margin: auto;
   top: calc(100% + 0.5rem);
+  box-shadow: var(--glow-effect);
+}
+
+/* Background for reading areas */
+.content-area {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Navigation styles - Updated for better visibility and horizontal layout */

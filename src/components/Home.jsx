@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-import AnimatedText from './AnimatedText';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -97,25 +96,22 @@ const Home = () => {
           animate={isVisible ? "visible" : "hidden"}
         >
           <motion.span className="hero-greeting" variants={itemVariants}>
-            Hi, Welcome! As you know, I'm
+            Hi, Welcome! I'm
           </motion.span>
           
           <motion.h1 className="hero-name" variants={itemVariants}>
-            <AnimatedText text="Parth R. Katke" />
+            Parth R. Katke
           </motion.h1>
           
           <motion.div className="hero-subtitle" variants={itemVariants}>
-            <span>A </span>
             <div className="hero-roles">
               <span>Software Developer</span>
-              <span>Flutter Expert</span>
-              <span>Python Enthusiast</span>
-              <span>Problem Solver</span>
             </div>
           </motion.div>
           
           <motion.p className="hero-description" variants={itemVariants}>
-            I build exceptional digital experiences with a focus on performance and user experience.
+            I specialize in creating responsive web applications and mobile solutions
+            with a focus on clean code, performance, and exceptional user experience.
           </motion.p>
           
           <motion.div variants={itemVariants}>

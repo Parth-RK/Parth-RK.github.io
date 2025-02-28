@@ -1,6 +1,9 @@
 .projects-section {
-  background-color: var(--background-color);
+  /* Remove background-color to make it transparent */
+  /* background-color: var(--background-color); */
   padding: var(--spacing-xl) 0;
+  position: relative; /* Add position relative */
+  z-index: 1; /* Place above particles */
 }
 
 .projects-container {
@@ -15,6 +18,10 @@
   margin-bottom: var(--spacing-xl);
   color: var(--text-color);
   position: relative;
+  text-transform: uppercase;
+  font-family: var(--heading-font);
+  letter-spacing: 3px;
+  text-shadow: var(--text-shadow);
 }
 
 .projects-title::after {
@@ -38,19 +45,25 @@
 }
 
 .filter-btn {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+  backdrop-filter: blur(3px); /* Light blur effect */
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--border-radius-md);
   cursor: pointer;
   transition: all var(--transition-speed);
+  font-family: var(--secondary-heading-font);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
   background-color: var(--primary-color);
   color: var(--light-text);
+  box-shadow: 0 0 10px rgba(255, 0, 13, 0.3); /* Add glow effect */
 }
 
 .projects-grid {
@@ -60,16 +73,18 @@
 }
 
 .project-card {
-  background-color: var(--card-background);
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent */
+  backdrop-filter: blur(5px); /* Add blur effect */
   border-radius: var(--border-radius-md);
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
 }
 
 .project-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5); /* Darker when hovered */
 }
 
 .project-image {
@@ -93,16 +108,21 @@
 }
 
 .project-title {
-  font-family: var(--heading-font);
+  font-family: var(--secondary-heading-font);
   font-size: 1.25rem;
   margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-color);
+  text-shadow: var(--text-shadow);
 }
 
 .project-description {
   font-size: 0.95rem;
   margin-bottom: var(--spacing-md);
-  color: var(--text-color);
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  text-shadow: var(--text-shadow);
 }
 
 .project-tech {
@@ -112,12 +132,17 @@
   margin-bottom: var(--spacing-md);
 }
 
-.project-tech span {
-  background-color: rgba(0, 119, 182, 0.1);
+.project-tech span,
+.tech-tag {
+  background-color: rgba(255, 0, 13, 0.15); /* Slightly more visible */
   color: var(--primary-color);
   padding: 2px 8px;
   border-radius: var(--border-radius-sm);
   font-size: 0.8rem;
+  backdrop-filter: blur(2px); /* Add very subtle blur */
+  font-family: var(--secondary-heading-font);
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 0, 13, 0.1);
 }
 
 .project-links {

@@ -20,7 +20,7 @@ const Header = () => {
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
-    { name: 'Fun Zone', href: '#fun-zone' },
+    { name: 'Fun Zone', href: 'tic-tac-toe/tic-tac-toe.html' },
   ];
 
   const navVariants = {
@@ -53,7 +53,7 @@ const Header = () => {
           className="logo"
           whileHover={{ scale: 1.1 }}
         >
-          <span>PK</span>
+          <span>PRK</span>
         </motion.a>
 
         <div 

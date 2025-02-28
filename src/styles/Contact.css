@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative; /* Add position relative */
+  z-index: 1; /* Place above particles */
 }
 
 .contact-container {
@@ -19,7 +21,9 @@
   text-align: center;
   position: relative;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
+  font-family: var(--heading-font);
+  text-shadow: var(--text-shadow);
 }
 
 .contact-title::after {
@@ -44,6 +48,9 @@
   font-size: calc(var(--h2-font-size) * 0.8);
   color: var(--text-color);
   margin-bottom: 1rem;
+  font-family: var(--secondary-heading-font);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .contact-description {
@@ -51,7 +58,11 @@
   font-size: var(--normal-font-size);
   line-height: 1.6;
   margin-bottom: 2.5rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: var(--text-shadow);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: var(--border-radius-sm);
 }
 
 .contact-info-list {
@@ -76,6 +87,8 @@
   font-weight: 700;
   color: var(--text-color);
   margin-bottom: 0.25rem;
+  font-family: var(--secondary-heading-font);
+  letter-spacing: 0.5px;
 }
 
 .contact-info-value {
@@ -105,11 +118,22 @@
   transform: translateY(-3px);
 }
 
+/* Enhance form wrapper to be semi-transparent with blur effect */
 .contact-form-wrapper {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4); /* More transparent */
+  backdrop-filter: blur(5px); /* Add blur effect */
   padding: 1.5rem;
   border-radius: var(--border-radius-md);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+}
+
+.contact-info {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .contact-form {
@@ -121,6 +145,7 @@
   position: relative;
 }
 
+/* Make form controls slightly more transparent */
 .form-control {
   width: 100%;
   padding: 1rem 1.5rem;
@@ -128,7 +153,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-color);
   border-radius: var(--border-radius-sm);
-  transition: border 0.3s;
+  transition: border 0.3s, background-color 0.3s;
   outline: none;
   font-weight: 400;
 }
@@ -138,6 +163,7 @@
 }
 
 .form-control:focus {
+  background-color: rgba(0, 0, 0, 0.4); /* Slightly darker when focused */
   border-color: var(--primary-color);
   box-shadow: 0 0 8px rgba(255, 0, 13, 0.3);
 }

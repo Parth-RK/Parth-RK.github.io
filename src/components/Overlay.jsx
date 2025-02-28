@@ -36,7 +36,7 @@ const Overlay = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          PK
+          PRK
         </motion.div>
         <motion.div 
           className="loading-bar"

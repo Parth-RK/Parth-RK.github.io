@@ -55,7 +55,7 @@
   background-color: rgba(255, 0, 13, 0.1);
   color: var(--primary-color);
   padding: 2px 8px;
-  border-radius: var(--border-radius-sm);
+  border-radius: 20px; /* Changed from var(--border-radius-sm) to 20px for rounder appearance */
   font-size: 0.8rem;
 }
 

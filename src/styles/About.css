@@ -1,6 +1,7 @@
 .about-section {
-  background-color: var(--background-color);
   padding: var(--spacing-xl) 0;
+  position: relative;
+  z-index: 1;
 }
 
 .about-container {
@@ -19,7 +20,9 @@
   flex: 1;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px); 
 }
 
 .about-image img {
@@ -34,6 +37,11 @@
 
 .about-text {
   flex: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .about-title {
@@ -41,20 +49,38 @@
   font-size: 2.5rem;
   margin-bottom: var(--spacing-md);
   color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: var(--text-shadow);
+  position: relative;
+  display: inline-block;
+}
+
+.about-title::after {
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 3px;
+  background-color: var(--primary-color);
+  left: 0;
+  bottom: -10px;
+  border-radius: 2px;
+  box-shadow: var(--glow-effect);
 }
 
 .about-text p {
   margin-bottom: var(--spacing-md);
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8); /* Updated text color for better contrast */
 }
 
 .about-paragraph {
   margin-bottom: var(--spacing-md);
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1rem;
   letter-spacing: 0.5px;
+  text-shadow: var(--text-shadow);
 }
 
 .about-paragraph:hover {
@@ -67,9 +93,12 @@
 }
 
 .skills-title {
-  font-family: var(--heading-font);
+  font-family: var(--secondary-heading-font);
   margin-bottom: var(--spacing-md);
   color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 
 .skill-tags {
@@ -79,11 +108,16 @@
 }
 
 .skill-tag {
-  background-color: rgba(255, 0, 13, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
   color: var(--primary-color);
   padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-lg);
   font-size: 0.9rem;
+  font-family: var(--secondary-heading-font);
+  font-weight: 500;
+  letter-spacing: 1px;
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 0, 13, 0.1);
 }
 
 /* Services Section */
@@ -98,6 +132,9 @@
   color: var(--text-color);
   text-align: center;
   position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: var(--text-shadow);
 }
 
 .services-title::after {
@@ -119,18 +156,21 @@
   margin-top: var(--spacing-lg);
 }
 
+/* Services Section - Make service cards semi-transparent */
 .service-card {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4); /* More transparent background */
+  backdrop-filter: blur(5px); /* Add blur effect */
   border-radius: var(--border-radius-md);
   padding: var(--spacing-lg);
   text-align: center;
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
 }
 
 .service-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Darker shadow for better contrast */
+  background-color: rgba(0, 0, 0, 0.5); /* Slightly darker when hovered */
 }
 
 .service-icon {
@@ -140,16 +180,19 @@
 }
 
 .service-title {
-  font-family: var(--heading-font);
+  font-family: var(--secondary-heading-font);
   font-size: 1.25rem;
   margin-bottom: var(--spacing-sm);
   color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .service-description {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   font-size: 0.95rem;
+  text-shadow: var(--text-shadow);
 }
 
 /* Responsive */

@@ -52,15 +52,15 @@ const Contact = () => {
                 <i className='bx bx-map contact-info-icon'></i>
                 <div>
                   <h3 className="contact-info-label">Location</h3>
-                  <span className="contact-info-value">Toronto, Canada</span>
+                  <span className="contact-info-value">Nanded, Bharat</span>
                 </div>
               </div>
               
               <div className="contact-info-item">
-                <i className='bx bx-envelope contact-info-icon'></i>
+                <i className='bx bxl-github contact-info-icon'></i>
                 <div>
-                  <h3 className="contact-info-label">Email</h3>
-                  <span className="contact-info-value">contact@parthkumar.dev</span>
+                  <h3 className="contact-info-label">GitHub</h3>
+                  <a href="https://github.com/Parth-RK" target="_blank" rel="noopener noreferrer" className="contact-info-value">github.com/Parth-RK</a>
                 </div>
               </div>
               
@@ -68,21 +68,9 @@ const Contact = () => {
                 <i className='bx bxl-linkedin-square contact-info-icon'></i>
                 <div>
                   <h3 className="contact-info-label">LinkedIn</h3>
-                  <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="contact-info-value">linkedin.com/in/yourprofile</a>
+                  <a href="https://linkedin.com/in/Parth-RK" target="_blank" rel="noopener noreferrer" className="contact-info-value">linkedin.com/in/Parth-RK</a>
                 </div>
               </div>
-            </div>
-            
-            <div className="contact-social">
-              <a href="https://github.com/Parth-RK" target="_blank" rel="noopener noreferrer" className="contact-social-link">
-                <i className='bx bxl-github'></i>
-              </a>
-              <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="contact-social-link">
-                <i className='bx bxl-linkedin'></i>
-              </a>
-              <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className="contact-social-link">
-                <i className='bx bxl-twitter'></i>
-              </a>
             </div>
           </div>
           

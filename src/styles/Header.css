@@ -21,10 +21,13 @@
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--primary-color);
   text-decoration: none;
+  font-family: var(--heading-font);
+  text-shadow: var(--glow-effect);
+  letter-spacing: 2px;
 }
 
 .nav-menu {
@@ -44,6 +47,10 @@
   transition: color 0.3s ease;
   position: relative;
   padding: 0.5rem 0;
+  font-family: var(--secondary-heading-font);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
 }
 
 .nav-link:hover {
