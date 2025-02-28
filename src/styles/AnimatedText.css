@@ -1,0 +1,15 @@
+
+.animated-text-container {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.animated-word {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.animated-letter {
+  display: inline-block;
+  position: relative;
+}

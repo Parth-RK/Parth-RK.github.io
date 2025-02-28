@@ -1,0 +1,57 @@
+.overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-modal);
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay.first {
+  background-color: var(--background-color);
+  z-index: 3;
+}
+
+.overlay.second {
+  background-color: var(--secondary-color);
+  z-index: 2;
+}
+
+.overlay.third {
+  background-color: var(--primary-color);
+  z-index: 1;
+}
+
+.loading-text {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.initials {
+  color: var(--primary-color);
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.loading-bar {
+  height: 3px;
+  background-color: var(--primary-color);
+  width: 200px;
+}
