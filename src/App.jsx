@@ -5,7 +5,6 @@ import Home from './components/Home';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
 import Overlay from './components/Overlay';
 import ParticlesBg from './components/ParticlesBg';
 import './styles/App.css';
@@ -20,7 +19,7 @@ function App() {
     // Simulate loading time for initial animation
     setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 1800);
   }, []);
 
   return (
@@ -49,7 +48,6 @@ function App() {
         </AnimatePresence>
       </div>
       
-      <Footer />
     </>
   );
 }

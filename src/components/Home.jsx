@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Check if we're at the top of the page
-      if (window.scrollY < 100) {
+      if (window.scrollY < 800) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -105,7 +105,7 @@ const Home = () => {
           
           <motion.div className="hero-subtitle" variants={itemVariants}>
             <div className="hero-roles">
-              <span>Software Developer</span>
+              <span>A Software Developer</span>
             </div>
           </motion.div>
           
