@@ -1,0 +1,128 @@
+/* src/styles/FunZoneLanding.css */
+.funzone-section {
+    /* Background can be similar to contact or projects */
+    background:
+      radial-gradient(circle at 50% 0%, rgba(0, 246, 255, 0.08) 0%, transparent 50%),
+      var(--background-dark);
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-20);
+    border-top: var(--border-width) solid var(--border-color);
+    position: relative; /* For potential future absolute elements */
+    overflow: hidden;
+  }
+  
+  .funzone-title {
+    /* Uses .section-title */
+     margin-bottom: var(--space-4); /* Less space below title */
+  }
+  
+  .funzone-description {
+    text-align: center;
+    font-size: var(--text-lg);
+    color: var(--text-medium);
+    max-width: 600px;
+    margin: 0 auto var(--space-12); /* Center and add margin below */
+  }
+  
+  .game-selection-grid {
+    display: grid;
+    /* Responsive columns: min 280px, prefer 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: var(--space-8);
+  }
+  
+  .game-card {
+    /* Reuses .glass-card from App.css */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-8) var(--space-6); /* Adjust padding */
+    /* Make hover state slightly different for fun zone */
+    border-color: rgba(138, 43, 226, 0.4); /* Slightly more prominent purple border */
+    transition: transform var(--transition-medium) ease,
+                box-shadow var(--transition-medium) ease,
+                border-color var(--transition-medium) ease,
+                background var(--transition-medium) ease; /* Ensure background transitions */
+  }
+  
+  /* Hover styles handled by variants, but define base transition here */
+  
+  
+  .game-card-icon {
+    font-size: var(--text-5xl); /* Large icon */
+    color: var(--primary-glow);
+    margin-bottom: var(--space-5);
+    text-shadow: var(--glow-effect);
+    transition: transform 0.3s ease;
+  }
+  
+  .game-card:hover .game-card-icon {
+      transform: scale(1.1) rotate(-5deg); /* Slight playful rotation */
+  }
+  
+  .game-card-title {
+    font-family: var(--font-secondary);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: var(--space-3);
+    letter-spacing: 0.5px;
+  }
+  
+  .game-card-description {
+    font-size: var(--text-sm);
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+    flex-grow: 1; /* Push button to bottom */
+  }
+  
+  .game-card-button {
+    display: inline-block;
+    background: var(--gradient-primary); /* Use gradient */
+    color: var(--text-light);
+    padding: var(--space-2) var(--space-6);
+    border-radius: var(--border-radius-md);
+    font-family: var(--font-secondary);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    margin-top: auto; /* Stick to bottom */
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast),
+                transform var(--transition-fast),
+                box-shadow var(--transition-fast),
+                opacity var(--transition-fast);
+  }
+  
+  .game-card-button.disabled {
+      background: var(--background-light);
+      color: var(--text-dark);
+      cursor: not-allowed;
+      opacity: 0.7;
+      box-shadow: none;
+  }
+  
+  /* Hover handled by variants */
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .funzone-description {
+      font-size: var(--text-base);
+      margin-bottom: var(--space-10);
+    }
+    .game-selection-grid {
+      gap: var(--space-6);
+    }
+    .game-card {
+       padding: var(--space-6) var(--space-5);
+    }
+    .game-card-icon { font-size: var(--text-4xl); }
+    .game-card-title { font-size: var(--text-lg); }
+    .game-card-description { font-size: var(--text-xs); }
+    .game-card-button { padding: var(--space-2) var(--space-5); }
+  }

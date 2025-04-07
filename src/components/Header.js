@@ -34,8 +34,8 @@ const Header = () => {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Fun Zone', href: '#fun-zone' },
     { name: 'Contact', href: '#contact' },
-    { name: 'Fun Zone', href: 'tic-tac-toe/tic-tac-toe.html' }, // Keeping this link as is
   ];
 
   const headerVariants = {
