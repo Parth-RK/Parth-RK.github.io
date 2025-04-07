@@ -1,6 +1,6 @@
 # Parth R. Katke - Portfolio Website
 
-![Portfolio Website](screenshot.png)
+![Portfolio Website](public/assets/screenshot.png)
 
 ## Description
 This is a personal portfolio website built with React.js to showcase my skills, projects, and professional experience. The website features a modern, responsive design with smooth animations and transitions powered by Framer Motion.
