@@ -1,187 +1,79 @@
+/* src/styles/Projects.css */
 .projects-section {
-  /* Remove background-color to make it transparent */
-  /* background-color: var(--background-color); */
-  padding: var(--spacing-xl) 0;
-  position: relative; /* Add position relative */
-  z-index: 1; /* Place above particles */
+   border-top: var(--border-width) solid var(--border-color);
 }
 
-.projects-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-md);
-}
-
-.projects-title {
-  text-align: center;
-  font-size: calc(var(--h2-font-size) * 1.25);
-  margin-bottom: var(--spacing-xl);
-  color: var(--text-color);
-  position: relative;
-  text-transform: uppercase;
-  font-family: var(--heading-font);
-  letter-spacing: 3px;
-  text-shadow: var(--text-shadow);
-}
-
-.projects-title::after {
-  content: '';
-  position: absolute;
-  width: 64px;
-  height: 0.18rem;
-  background-color: var(--primary-color);
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: calc(100% + 0.5rem);
-}
 
 .projects-filter {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-xl);
   flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
 }
 
 .filter-btn {
-  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
-  backdrop-filter: blur(3px); /* Light blur effect */
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
-  padding: var(--spacing-xs) var(--spacing-md);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-medium);
+  background-color: rgba(26, 35, 69, 0.5); /* Semi-transparent base */
+  padding: var(--space-2) var(--space-5);
   border-radius: var(--border-radius-md);
-  cursor: pointer;
-  transition: all var(--transition-speed);
-  font-family: var(--secondary-heading-font);
+  border: 1px solid transparent;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative; /* For the active indicator */
+  overflow: hidden; /* Contain indicator */
 }
 
-.filter-btn:hover,
-.filter-btn.active {
-  background-color: var(--primary-color);
-  color: var(--light-text);
-  box-shadow: 0 0 10px rgba(255, 0, 13, 0.3); /* Add glow effect */
+.filter-btn:hover {
+  color: var(--text-light);
+  background-color: rgba(0, 162, 255, 0.2);
+  border-color: rgba(0, 162, 255, 0.4);
 }
+
+.filter-btn.active {
+  color: var(--primary-glow);
+  /* background-color: rgba(0, 246, 255, 0.15); */
+  /* border-color: var(--primary-glow); */
+  background-color: transparent; /* Let indicator show background */
+  /* box-shadow: 0 0 15px var(--shadow-color); */
+}
+
+/* Animated underline/background for active button */
+.active-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%; /* Full background highlight */
+    background: var(--gradient-primary);
+    border-radius: var(--border-radius-md); /* Match button */
+    z-index: -1; /* Behind the text */
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--spacing-lg);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); /* Responsive columns */
+  gap: var(--space-6);
 }
 
-.project-card {
-  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent */
-  backdrop-filter: blur(5px); /* Add blur effect */
-  border-radius: var(--border-radius-md);
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
-}
 
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  background-color: rgba(0, 0, 0, 0.5); /* Darker when hovered */
-}
-
-.project-image {
-  height: 200px;
-  overflow: hidden;
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-speed);
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.05);
-}
-
-.project-content {
-  padding: var(--spacing-md);
-}
-
-.project-title {
-  font-family: var(--secondary-heading-font);
-  font-size: 1.25rem;
-  margin-bottom: var(--spacing-sm);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-color);
-  text-shadow: var(--text-shadow);
-}
-
-.project-description {
-  font-size: 0.95rem;
-  margin-bottom: var(--spacing-md);
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
-  text-shadow: var(--text-shadow);
-}
-
-.project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-xs);
-  margin-bottom: var(--spacing-md);
-}
-
-.project-tech span,
-.tech-tag {
-  background-color: rgba(255, 0, 13, 0.15); /* Slightly more visible */
-  color: var(--primary-color);
-  padding: 2px 8px;
-  border-radius: var(--border-radius-sm);
-  font-size: 0.8rem;
-  backdrop-filter: blur(2px); /* Add very subtle blur */
-  font-family: var(--secondary-heading-font);
-  letter-spacing: 0.5px;
-  border: 1px solid rgba(255, 0, 13, 0.1);
-}
-
-.project-links {
-  display: flex;
-  gap: var(--spacing-sm);
-}
-
-.project-links a {
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all var(--transition-speed);
-}
-
-.demo-link {
-  background-color: var(--primary-color);
-  color: var(--light-text);
-}
-
-.code-link {
-  background-color: transparent;
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
-}
-
-.demo-link:hover {
-  background-color: var(--secondary-color);
-}
-
-.code-link:hover {
-  background-color: var(--primary-color);
-  color: var(--light-text);
-}
-
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 768px) {
+  .projects-filter {
+    gap: var(--space-3);
+  }
+  .filter-btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+  }
   .projects-grid {
-    grid-template-columns: 1fr;
+    gap: var(--space-5);
   }
 }

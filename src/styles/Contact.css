@@ -1,271 +1,238 @@
+/* src/styles/Contact.css */
 .contact-section {
-  padding: 5rem 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative; /* Add position relative */
-  z-index: 1; /* Place above particles */
+  background:
+    radial-gradient(circle at 90% 10%, rgba(138, 43, 226, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(0, 162, 255, 0.1) 0%, transparent 40%),
+    var(--background-dark); /* Base background */
+  padding-bottom: var(--space-24); /* Extra padding at the bottom */
+  border-top: var(--border-width) solid var(--border-color);
 }
 
-.contact-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-md);
-}
 
-.contact-title {
-  font-size: var(--h2-font-size);
-  color: var(--text-color);
-  margin: 0 auto 3rem;
-  text-align: center;
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-family: var(--heading-font);
-  text-shadow: var(--text-shadow);
-}
 
-.contact-title::after {
-  content: '';
-  position: absolute;
-  width: 64px;
-  height: 0.18rem;
-  background-color: var(--primary-color);
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: calc(100% + 0.5rem);
-}
-
-.contact-content {
+.contact-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-8);
+  align-items: start; /* Align items to the top */
 }
+
 
 .contact-info-title {
-  font-size: calc(var(--h2-font-size) * 0.8);
-  color: var(--text-color);
-  margin-bottom: 1rem;
-  font-family: var(--secondary-heading-font);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-family: var(--font-secondary);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: var(--space-4);
+  position: relative;
 }
 
-.contact-description {
-  font-weight: 400;
-  font-size: var(--normal-font-size);
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: var(--text-shadow);
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 1rem;
-  border-radius: var(--border-radius-sm);
+.contact-info-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -var(--space-2);
+    width: 40px;
+    height: 2px;
+    background: var(--primary-glow);
 }
 
-.contact-info-list {
-  display: grid;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
+
+.contact-info-description {
+  color: var(--text-medium);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-8);
+  line-height: 1.7;
 }
 
-.contact-info-item {
+.contact-details-list {
   display: flex;
-  align-items: flex-start;
-  column-gap: 0.75rem;
+  flex-direction: column;
+  gap: var(--space-5);
 }
 
-.contact-info-icon {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-}
-
-.contact-info-label {
-  font-size: var(--normal-font-size);
-  font-weight: 700;
-  color: var(--text-color);
-  margin-bottom: 0.25rem;
-  font-family: var(--secondary-heading-font);
-  letter-spacing: 0.5px;
-}
-
-.contact-info-value {
-  font-size: var(--small-font-size);
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-}
-
-.contact-info-value:hover {
-  color: var(--primary-color);
-}
-
-.contact-social {
+.contact-detail-item {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--text-medium);
 }
 
-.contact-social-link {
-  font-size: 1.5rem;
-  color: var(--text-color);
-  transition: 0.3s;
+.contact-detail-icon {
+  font-size: var(--text-xl);
+  color: var(--primary-accent);
+  flex-shrink: 0; /* Prevent icon shrinking */
 }
 
-.contact-social-link:hover {
-  color: var(--primary-color);
-  transform: translateY(-3px);
+.contact-detail-text,
+.contact-detail-link {
+  font-size: var(--text-base);
+  color: var(--text-medium);
+  word-break: break-word; /* Prevent long links overflowing */
+  transition: color var(--transition-fast);
 }
 
-/* Enhance form wrapper to be semi-transparent with blur effect */
-.contact-form-wrapper {
-  background-color: rgba(0, 0, 0, 0.4); /* More transparent */
-  backdrop-filter: blur(5px); /* Add blur effect */
-  padding: 1.5rem;
-  border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
-}
-
-.contact-info {
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  padding: 1.5rem;
-  border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.contact-detail-link:hover {
+  color: var(--primary-glow);
 }
 
 .contact-form {
-  display: grid;
-  row-gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
 }
 
+/* Form status messages */
+.form-status-container {
+  min-height: 3rem; /* Reserve space to prevent layout shifts */
+  display: flex;
+  align-items: center;
+}
+.form-status-message {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--border-radius-md);
+  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border: 1px solid;
+}
+
+.form-status-message.success {
+  background-color: rgba(0, 255, 100, 0.1);
+  color: #4caf50; /* Keep consistent color */
+  border-color: rgba(76, 175, 80, 0.5);
+}
+
+.form-status-message.error {
+  background-color: rgba(255, 0, 50, 0.1);
+  color: #f44336;
+  border-color: rgba(244, 67, 54, 0.5);
+}
+
+.status-icon {
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+}
+
+
+/* Floating Label Input Styling */
 .form-group {
   position: relative;
 }
 
-/* Make form controls slightly more transparent */
 .form-control {
   width: 100%;
-  padding: 1rem 1.5rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-color);
-  border-radius: var(--border-radius-sm);
-  transition: border 0.3s, background-color 0.3s;
+  padding: var(--space-4) var(--space-4) var(--space-2); /* Adjust padding for label */
+  background-color: rgba(5, 8, 22, 0.7); /* Darker input bg */
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  color: var(--text-light);
+  font-size: var(--text-base);
   outline: none;
-  font-weight: 400;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
-.form-control::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+/* Apply focus styles via motion */
+
+.form-label {
+  position: absolute;
+  color: var(--text-medium);
+  pointer-events: none;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  font-size: var(--text-base);
 }
 
-.form-control:focus {
-  background-color: rgba(0, 0, 0, 0.4); /* Slightly darker when focused */
-  border-color: var(--primary-color);
-  box-shadow: 0 0 8px rgba(255, 0, 13, 0.3);
+/* Name and email labels - centered vertically */
+.form-control:not(textarea) + .form-label {
+  top: 50%;
+  left: var(--space-4);
+  transform: translateY(-50%);
 }
+
+/* Textarea label - remains at top */
+textarea.form-control + .form-label {
+  top: var(--space-4);
+  left: var(--space-4);
+}
+
+/* Floating label effect for inputs (name/email) */
+.form-control:not(textarea):focus + .form-label,
+.form-control:not(textarea):not(:placeholder-shown) + .form-label {
+  top: var(--space-1);
+  transform: translateY(0);
+  font-size: var(--text-xs);
+  color: var(--primary-accent);
+}
+
+/* Floating label effect for textarea (message) */
+textarea.form-control:focus + .form-label,
+textarea.form-control:not(:placeholder-shown) + .form-label {
+  top: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--primary-accent);
+}
+
+.form-control:focus + .form-label {
+    color: var(--primary-glow); /* Brighter on focus */
+}
+
 
 textarea.form-control {
-  height: 10rem;
-  resize: none;
+  resize: vertical; /* Allow vertical resize only */
+  min-height: 120px;
 }
 
-.submit-btn {
+/* Submit Button */
+.submit-button {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 0.75rem 1.5rem;
-  color: var(--text-color);
-  font-weight: 700;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-6);
+  background: var(--gradient-primary);
+  color: var(--text-light);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   border: none;
   cursor: pointer;
-  border-radius: var(--border-radius-sm);
-  background-color: var(--primary-color);
-  transition: 0.3s;
-  font-family: var(--body-font);
+  transition: background var(--transition-medium), box-shadow var(--transition-medium), opacity var(--transition-fast);
+  align-self: flex-start; /* Align button to start */
 }
 
-.submit-btn:hover {
-  background-color: rgba(255, 0, 13, 0.8);
+.submit-button:disabled {
+    cursor: not-allowed;
+    /* Opacity handled by variants */
 }
 
-.submit-btn.submitting {
-  opacity: 0.7;
-  cursor: not-allowed;
+.spinner {
+  display: inline-flex;
+  animation: spin 1s linear infinite;
+  font-size: var(--text-lg);
 }
 
-.loading-icon {
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid transparent;
-  border-top-color: var(--text-color);
-  border-radius: 50%;
-  margin-right: 0.5rem;
-  animation: spin 0.8s linear infinite;
+.send-icon {
+    font-size: var(--text-lg);
+    margin-left: var(--space-1);
 }
+
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-grid {
+    gap: var(--space-6);
   }
-}
-
-.form-status {
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.success-message,
-.error-message {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius-sm);
-  font-size: var(--small-font-size);
-  font-weight: 400;
-  animation: fadeIn 0.3s forwards;
-}
-
-.success-message {
-  background-color: rgba(0, 128, 0, 0.2);
-  border: 1px solid rgba(0, 128, 0, 0.5);
-  color: #4caf50;
-}
-
-.error-message {
-  background-color: rgba(255, 0, 0, 0.2);
-  border: 1px solid rgba(255, 0, 0, 0.5);
-  color: #f44336;
-}
-
-.message-icon {
-  margin-right: 0.5rem;
-  font-size: 1.2rem;
-}
-
-@media screen and (min-width: 768px) {
-  .contact-title {
-    font-size: calc(var(--h2-font-size) * 1.25);
-    margin-bottom: 4rem;
-  }
-  
-  .contact-content {
-    grid-template-columns: repeat(2, 1fr);
-    align-items: start;
-  }
-  
-  .submit-btn {
-    width: max-content;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .contact-form-wrapper {
-    padding: 2rem;
-  }
+  .contact-info-title { font-size: var(--text-xl); }
+  .contact-detail-text, .contact-detail-link { font-size: var(--text-sm); }
+  .submit-button { align-self: stretch; } /* Full width button on mobile */
 }

@@ -1,15 +1,26 @@
-
+/* src/styles/AnimatedText.css */
 .animated-text-container {
-  display: inline-block;
-  overflow: hidden;
+  display: inline-block; /* Allows wrapping text */
+  overflow: hidden; /* Ensures letters animate within bounds */
+  line-height: 1.1; /* Prevent excessive line height */
+  vertical-align: top; /* Align nicely with other inline elements */
 }
 
-.animated-word {
-  display: inline-block;
-  margin-right: 8px;
+.animated-letter, .animated-word {
+  display: inline-block; /* Necessary for individual animation */
+  white-space: pre; /* Preserve spaces */
 }
 
-.animated-letter {
-  display: inline-block;
-  position: relative;
+/* Add specific class styles if needed */
+.hero-name-animation .animated-letter {
+  /* Example: Styles specific to the hero name animation */
+  font-size: inherit; /* Inherit from parent */
+  font-weight: inherit;
+  color: inherit;
+  text-shadow: inherit;
+}
+
+.hero-greeting-animation .animated-letter {
+   font-size: inherit;
+   color: var(--text-medium);
 }
