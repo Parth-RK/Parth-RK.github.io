@@ -32,11 +32,10 @@ const AnimatedTextCharacter = ({ text, className = "", stagger = 0.05, delay = 0
       variants={container}
       initial="hidden"
       animate="visible"
-      aria-label={text} // Accessibility
+      aria-label={text}
     >
       {letters.map((letter, index) => (
         <motion.span key={`${letter}-${index}`} variants={child} className="animated-letter">
-          {/* Replace space with non-breaking space for layout */}
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}
@@ -45,7 +44,6 @@ const AnimatedTextCharacter = ({ text, className = "", stagger = 0.05, delay = 0
 };
 
 
-// Optional: Word animation (if needed later)
 const AnimatedTextWord = ({ text, className="", stagger = 0.2, delay = 0 }) => {
     const words = text.split(" ");
 
@@ -60,8 +58,8 @@ const AnimatedTextWord = ({ text, className="", stagger = 0.2, delay = 0 }) => {
     const child = {
         hidden: {
             opacity: 0,
-            y: 30, // Slightly larger jump for words
-            filter: "blur(5px)", // Add blur effect
+            y: 30,
+            filter: "blur(5px)",
             transition: { type: "spring", damping: 15, stiffness: 100 },
         },
         visible: {
@@ -79,13 +77,13 @@ const AnimatedTextWord = ({ text, className="", stagger = 0.2, delay = 0 }) => {
             initial="hidden"
             animate="visible"
             aria-label={text}
-            style={{ display: 'flex', flexWrap: 'wrap' }} // Ensure words wrap correctly
+            style={{ display: 'flex', flexWrap: 'wrap' }}
         >
             {words.map((word, index) => (
                 <motion.span
                     key={`${word}-${index}`}
                     variants={child}
-                    style={{ marginRight: '0.5em', display: 'inline-block' }} // Add space between words
+                    style={{ marginRight: '0.5em', display: 'inline-block' }}
                     className="animated-word"
                 >
                     {word}

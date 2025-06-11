@@ -26,25 +26,23 @@ const funZoneItems = [
     title: 'Pixel Canvas',
     description: 'Create unique generative art with interactive brushes and particle effects.',
     icon: <FaPaintBrush />,
-    path: '/fun-zone/generative-art', // Updated path for routing
+    path: '/fun-zone/generative-art',
     status: 'Concept'
   },
    {
     id: 'memory-game',
     title: 'Circuit Match',
     description: 'Test your memory matching futuristic icons in this sleek card game.',
-    icon: <FaBrain />, // Or FaPuzzlePiece
-    path: '/fun-zone/memory-game', // Updated path for routing
+    icon: <FaBrain />,
+    path: '/fun-zone/memory-game',
     status: 'Concept'
   },
-  // Add more concepts here
 ];
 
 const FunZoneLanding = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
 
-  // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -64,9 +62,9 @@ const FunZoneLanding = () => {
   };
 
   const gridVariants = {
-    hidden: {}, // Children handle their own opacity
+    hidden: {},
     visible: {
-        transition: { staggerChildren: 0.1 } // Stagger card appearance
+        transition: { staggerChildren: 0.1 }
     }
   };
 
@@ -81,8 +79,8 @@ const FunZoneLanding = () => {
     hover: {
       y: -8,
       scale: 1.03,
-      boxShadow: "0 10px 30px var(--shadow-color)", // More pronounced shadow
-      borderColor: "var(--primary-glow)", // Glowing border
+      boxShadow: "0 10px 30px var(--shadow-color)",
+      borderColor: "var(--primary-glow)",
       transition: { duration: 0.3, ease: "easeOut" }
     }
   };
@@ -95,7 +93,7 @@ const FunZoneLanding = () => {
 
   return (
     <motion.section
-      id="fun-zone" // Use this ID for navigation
+      id="fun-zone"
       className="funzone-section"
       ref={sectionRef}
       variants={containerVariants}
@@ -114,10 +112,10 @@ const FunZoneLanding = () => {
           {funZoneItems.map((item) => (
             <motion.div
               key={item.id}
-              className="game-card glass-card" // Re-use glass-card base
+              className="game-card glass-card"
               variants={cardVariants}
               whileHover="hover"
-              layout // Animate layout changes if grid reflows
+              layout
             >
               <div className="game-card-icon">{item.icon}</div>
               <h3 className="game-card-title">{item.title}</h3>

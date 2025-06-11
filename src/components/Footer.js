@@ -26,8 +26,8 @@ const Footer = () => {
         className="footer"
         variants={footerVariants}
         initial="hidden"
-        whileInView="visible" // Animate when footer comes into view
-        viewport={{ once: true, amount: 0.2 }} // Trigger once
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
     >
       <div className="container footer-container">
         <div className="footer-social-links">

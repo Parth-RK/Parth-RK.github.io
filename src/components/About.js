@@ -1,32 +1,30 @@
 import React, { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { FaCode, FaLaptopCode, FaServer, FaMobileAlt, FaBrain, FaPalette } from 'react-icons/fa'; // Added more relevant icons
+import { FaCode, FaLaptopCode, FaServer, FaMobileAlt, FaBrain, FaPalette } from 'react-icons/fa';
 import '../styles/About.css';
 
 const About = () => {
   const sectionRef = useRef(null);
-  // Trigger animation slightly earlier/more often
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
 
-  // Parallax for image (subtle)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"] // Animate throughout visibility
+    offset: ["start end", "end start"]
   });
-  const imageY = useTransform(scrollYProgress, [0, 1], [-50, 50]); // Slower movement
-  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.1, 0.3, 0.1]); // Fade background element
+  const imageY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.1, 0.3, 0.1]);
 
   const skills = [
     { name: "Flutter", level: 95, icon: FaMobileAlt },
     { name: "Python", level: 90, icon: FaCode },
-    { name: "Rust", level: 80, icon: FaCode }, // Consider a specific Rust icon if available
+    { name: "Rust", level: 80, icon: FaCode },
     { name: "C++", level: 85, icon: FaCode },
     { name: "JavaScript", level: 75, icon: FaCode },
     { name: "MySQL", level: 80, icon: FaServer },
     { name: "React", level: 70, icon: FaLaptopCode },
-    { name: "HTML/CSS", level: 85, icon: FaPalette }, // Use Palette for design aspects
-    { name: "UI/UX", level: 70, icon: FaPalette }, // Add UI/UX skill
-    { name: "Machine Learning", level: 65, icon: FaBrain }, // Add ML skill
+    { name: "HTML/CSS", level: 85, icon: FaPalette },
+    { name: "UI/UX", level: 70, icon: FaPalette },
+    { name: "Machine Learning", level: 65, icon: FaBrain },
   ];
 
   const services = [
@@ -46,13 +44,12 @@ const About = () => {
       description: "Scalable server-side logic and efficient database management (MySQL)."
     },
      {
-      icon: <FaPalette />, // Combined UI/UX design service
+      icon: <FaPalette />,
       title: "UI/UX Design",
       description: "Crafting engaging user interfaces with modern design principles."
     }
   ];
 
-  // Animation Variants
   const sectionVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -98,7 +95,7 @@ const About = () => {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.8, ease: "easeOut", delay: 0.4 } // Delay after main content
+        transition: { duration: 0.8, ease: "easeOut", delay: 0.4 }
     }
   };
 
@@ -112,7 +109,6 @@ const About = () => {
      },
      hover: {
         y: -10,
-        // Handled by .glass-card:hover in App.css for background/border
         transition: { duration: 0.3 }
      }
   };
@@ -127,7 +123,6 @@ const About = () => {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
     >
-      {/* Subtle animated background element */}
       <motion.div
         className="about-background-shape"
         style={{ opacity: backgroundOpacity }}
@@ -135,19 +130,17 @@ const About = () => {
 
       <div className="container about-container">
         <div className="about-grid">
-          {/* Image Column */}
           <motion.div className="about-image-wrapper" variants={imageVariants}>
             <motion.img
-                src="/assets/profile.jpg" // Make sure this path is correct (relative to public folder)
+                src="/assets/profile.jpg"
                 alt="Parth R. Katke"
                 className="about-image"
-                style={{ y: imageY }} // Apply parallax
+                style={{ y: imageY }}
                 whileHover={{ scale: 1.05, filter: "brightness(1.1)"}}
                 transition={{duration: 0.3}}
              />
           </motion.div>
 
-          {/* Text Content Column */}
           <motion.div className="about-text-content glass-card" variants={textContentVariants}>
             <h2 className="about-title section-subtitle">
               Who <span className="highlight">I Am</span>
@@ -177,8 +170,6 @@ const About = () => {
                   >
                     <span className="skill-icon">{skill.icon && <skill.icon />}</span>
                     <span className="skill-name">{skill.name}</span>
-                     {/*Add level indicator*/}
-                     {/* <span className="skill-level">{skill.level}%</span> */}
                   </motion.div>
                 ))}
               </motion.div>
@@ -186,7 +177,6 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Services Section */}
         <motion.div className="services-section" variants={sectionVariants}>
           <motion.h2 className="services-title section-subtitle" variants={servicesTitleVariants}>
             What <span className="highlight">I Offer</span>

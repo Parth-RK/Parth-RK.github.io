@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import ProjectCard from './ProjectCard'; // Assuming ProjectCard component exists
+import ProjectCard from './ProjectCard';
 import '../styles/Projects.css';
 
 const Projects = () => {
   const sectionRef = useRef(null);
-  // Trigger when 10% of the section is visible
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
 
   // Simplified filters for demo
@@ -15,13 +14,13 @@ const Projects = () => {
   const allProjects = [
      {
       id: 1,
-      title: "Finance Manager", // Shorter Title
+      title: "Finance Manager",
       image: "/assets/pro1.jpg",
       tags: ["Python", "Tkinter", "MySQL", "Desktop"],
-      category: "Others", // Add category
+      category: "Others",
       description: "Desktop system for tracking assets, liabilities & transactions using Python/Tkinter.",
-      color: "#4CAF50", // Keep color for potential use in card
-      demoUrl: "#", // Add actual URLs
+      color: "#4CAF50",
+      demoUrl: "#",
       codeUrl: "#"
     },
     {
@@ -59,7 +58,7 @@ const Projects = () => {
     },
     {
       id: 5,
-      title: "Ransomware Demo", // Simplified
+      title: "Ransomware Demo",
       image: "/assets/pro5.jpg",
       tags: ["Rust", "Slint", "Python", "Security"],
       category: "Others",
@@ -70,13 +69,13 @@ const Projects = () => {
     },
      {
       id: 6,
-      title: "Portfolio v1", // Specify version
+      title: "Portfolio v1",
       image: "/assets/pro6.jpg",
       tags: ["JavaScript", "HTML", "CSS", "SCSS", "Web"],
       category: "Web",
       description: "Previous version of my personal portfolio website showcasing projects and skills.",
        color: "#607D8B",
-       demoUrl: "#", // Link to old site if exists
+       demoUrl: "#",
        codeUrl: "#"
     },
     {
@@ -90,14 +89,12 @@ const Projects = () => {
        demoUrl: "#",
        codeUrl: "#"
     }
-    // Add more projects as needed
   ];
 
   const filteredProjects = activeFilter === "All"
     ? allProjects
     : allProjects.filter(project => project.category === activeFilter);
 
-  // Animation Variants
   const titleVariants = {
     hidden: { opacity: 0, y: -50 },
     visible: {
@@ -128,7 +125,7 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1, // Stagger animation for each card
+        staggerChildren: 0.1,
       }
     }
   };
@@ -170,9 +167,9 @@ const Projects = () => {
         <motion.div
           className="projects-grid"
           variants={gridVariants}
-          key={activeFilter} // Re-trigger stagger animation when filter changes
+          key={activeFilter}
         >
-            <AnimatePresence mode="sync"> {/* Use mode='popLayout' if elements jump too much */}
+            <AnimatePresence mode="sync">
               {filteredProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}

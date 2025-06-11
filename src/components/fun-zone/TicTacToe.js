@@ -4,18 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const theme = {
     primary: '#00A380',
-    accent: '#4cyanff', // Neon cyan
+    accent: '#4cyanff', 
     glow: '#00f7ff',
-    background: '#0a0f1f', // Deep dark blue/purple
+    background: '#0a0f1f',
     backgroundGradient: 'linear-gradient(135deg, #0a0f1f 0%, #1a1f3f 100%)',
-    text: '#e0e0ff',    // Light lavender text
+    text: '#e0e0ff',
     textDim: '#a0a0cc',
     cellBg: 'rgba(26, 31, 63, 0.7)',
     cellHoverBg: 'rgba(40, 50, 90, 0.9)',
     cellBorder: '#303f70',
-    xColor: '#ff33ff',  // Neon Pink/Magenta for X
-    oColor: '#33ffff',  // Neon Cyan for O
-    winColor: '#ffff00',  // Yellow for winner highlight
+    xColor: '#ff33ff',
+    oColor: '#33ffff',
+    winColor: '#ffff00',
     resetColor: '#ff4d4d',
     resetGlow: '#ff8080',
     undoColor: '#4d79ff',
@@ -254,7 +254,7 @@ const cellVariants = {
 const Cell = React.memo(({ value, onClick, isFading, disabled }) => {
   const cellContent = value ? (
     <motion.span
-      key={value + (isFading ? '-fade' : '')} // Key change triggers animation
+      key={value + (isFading ? '-fade' : '')}
       variants={cellVariants}
       initial="hidden"
       animate="visible"
@@ -268,14 +268,14 @@ const Cell = React.memo(({ value, onClick, isFading, disabled }) => {
   return (
     <CellWrapper
       className={`${value ? value : ''} ${isFading ? 'fading' : ''}`}
-      onClick={disabled || value ? undefined : onClick} // Only allow click if not disabled or filled
+      onClick={disabled || value ? undefined : onClick}
       whileHover={disabled || value ? {} : { scale: 1.05, zIndex: 1 }}
       whileTap={disabled || value ? {} : { scale: 0.95 }}
       aria-label={`Cell ${value ? `contains ${value}` : 'is empty'}`}
       role="button"
-      tabIndex={disabled || value ? -1 : 0} // Accessibility
-      disabled={disabled || !!value} // Pass disabled state for styling
-      theme={theme} // Pass theme explicitly if needed outside ThemeProvider context
+      tabIndex={disabled || value ? -1 : 0}
+      disabled={disabled || !!value}
+      theme={theme}
     >
       <AnimatePresence mode='wait'>
         {cellContent}
@@ -288,13 +288,13 @@ const Cell = React.memo(({ value, onClick, isFading, disabled }) => {
 // --- 4. Main TicTacToe Component Definition ---
 
 const winningCombinations = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-  [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-  [0, 4, 8], [2, 4, 6]             // Diagonals
+  [0, 1, 2], [3, 4, 5], [6, 7, 8],
+  [0, 3, 6], [1, 4, 7], [2, 5, 8],
+  [0, 4, 8], [2, 4, 6]
 ];
 
 const initialBoard = Array(9).fill(null);
-const initialPlayerMoves = { X: [], O: [] }; // Stores { index: number, moveId: number }
+const initialPlayerMoves = { X: [], O: [] };
 const initialHistory = [];
 const initialScores = { X: 0, O: 0 };
 
@@ -332,12 +332,12 @@ const TicTacToe = () => {
     currentPlayerSpecificMoves.push({ index, moveId: newMoveId });
 
     let oldestMoveIndex = -1;
-    let fadedPlayer = null; // Track whose move got faded
+    let fadedPlayer = null;
     if (currentPlayerSpecificMoves.length > 3) {
       const oldestMove = currentPlayerSpecificMoves.shift();
       oldestMoveIndex = oldestMove.index;
-      newBoard[oldestMoveIndex] = null; // Clear visually
-      fadedPlayer = currentPlayer; // It was the current player's move that faded
+      newBoard[oldestMoveIndex] = null;
+      fadedPlayer = currentPlayer;
     }
 
     newPlayerMoves[currentPlayer] = currentPlayerSpecificMoves;
@@ -377,7 +377,6 @@ const TicTacToe = () => {
     setGameOver(false);
     setHistory(initialHistory);
     setMoveCount(0);
-    // Scores are kept between resets
   }, []);
 
   const undoMove = useCallback(() => {
@@ -387,9 +386,7 @@ const TicTacToe = () => {
       const newHistory = history.slice(0, -1);
 
       let boardToRestore = [...lastMove.boardBefore];
-      // If the undone move caused a fade, restore the faded cell visually
       if(lastMove.fadedMoveInfo) {
-         // The player whose move was faded needs their symbol put back
          boardToRestore[lastMove.fadedMoveInfo.index] = lastMove.fadedMoveInfo.player;
       }
 
@@ -398,13 +395,12 @@ const TicTacToe = () => {
       setPlayerMoves(JSON.parse(JSON.stringify(lastMove.playerMovesBefore)));
       setCurrentPlayer(lastMove.player);
       setHistory(newHistory);
-      setMoveCount(lastMove.moveId - 1); // Go back one move count
+      setMoveCount(lastMove.moveId - 1);
 
 
-      if (gameOver) { // If the undone move resulted in a win
+      if (gameOver) {
         setWinner(null);
         setGameOver(false);
-        // Decrement score only if the game was truly over (winner was set)
          if (winner) {
             setScores(prevScores => ({
             ...prevScores,
@@ -415,12 +411,10 @@ const TicTacToe = () => {
   }, [history, gameOver, winner]);
 
 
-  // Determine which cells should be fading
   const fadingCellIndices = {};
    if (playerMoves.X.length > 2) fadingCellIndices[playerMoves.X[0].index] = true;
    if (playerMoves.O.length > 2) fadingCellIndices[playerMoves.O[0].index] = true;
 
-  // --- Animation Variants ---
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2, duration: 0.4 } },
@@ -438,7 +432,6 @@ const TicTacToe = () => {
   }
 
   return (
-    // Use ThemeProvider to pass theme down to all styled components
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <GameWrapper
@@ -458,7 +451,7 @@ const TicTacToe = () => {
               value={value}
               onClick={() => handleCellClick(index)}
               isFading={!!fadingCellIndices[index]}
-              disabled={gameOver || !!value} // Pass disabled status
+              disabled={gameOver || !!value}
             />
           ))}
         </BoardContainer>
@@ -508,7 +501,6 @@ const TicTacToe = () => {
 
 export default TicTacToe;
 
-// Add this at the end of the file to modify footer styling for this page
 const footerStyle = document.createElement('style');
 footerStyle.textContent = `
   footer {

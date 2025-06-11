@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/Header.css';
-import { FaBars, FaTimes } from 'react-icons/fa'; // Import icons
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -12,19 +12,16 @@ const Header = () => {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
-    // Set initial state
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    // Prevent body scroll when mobile menu is open
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-    // Cleanup function
     return () => {
         document.body.style.overflow = 'auto';
     };

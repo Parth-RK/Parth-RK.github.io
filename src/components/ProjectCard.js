@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
-import '../styles/ProjectCard.css'; // We'll create/update this CSS
+import '../styles/ProjectCard.css';
 
 const ProjectCard = ({ project }) => {
 
@@ -13,14 +13,13 @@ const ProjectCard = ({ project }) => {
       scale: 1,
       transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
     },
-     exit: { // Add exit animation for filtering
+     exit: {
         opacity: 0,
         scale: 0.8,
         transition: { duration: 0.3, ease: "easeIn" }
      }
   };
 
-  // Variants for hover effect elements
   const hoverOverlayVariants = {
     rest: { opacity: 0 },
     hover: { opacity: 1, transition: { duration: 0.4 } }
@@ -32,7 +31,7 @@ const ProjectCard = ({ project }) => {
   };
 
   const tagVariants = {
-    rest: { opacity: 0.7 }, // Start slightly faded
+    rest: { opacity: 0.7 },
     hover: { scale: 1.05, opacity: 1 }
   };
 
@@ -43,13 +42,13 @@ const ProjectCard = ({ project }) => {
 
   return (
     <motion.div
-      className="project-card glass-card" // Reuse glass-card base
+      className="project-card glass-card"
       variants={cardVariants}
       initial="hidden"
       animate="visible"
-      exit="exit" // Apply exit animation
-      whileHover="hover" // Trigger hover state for children
-      layout // Enable layout animation for filtering
+      exit="exit"
+      whileHover="hover"
+      layout
     >
       <div className="project-image-container">
         <img
@@ -57,11 +56,10 @@ const ProjectCard = ({ project }) => {
           alt={project.title}
           className="project-image"
         />
-        {/* Hover Overlay with Links */}
         <motion.div
           className="project-hover-overlay"
           variants={hoverOverlayVariants}
-          initial="rest" // Important: Initial needs to match whileHover state name
+          initial="rest"
         >
           <motion.div className="project-links" variants={contentVariants}>
              {project.demoUrl && project.demoUrl !== "#" && (
@@ -71,7 +69,7 @@ const ProjectCard = ({ project }) => {
                     rel="noopener noreferrer"
                     className="project-link-icon"
                     aria-label={`Live demo of ${project.title}`}
-                    variants={iconButtonVariants} // Reuse variant
+                    variants={iconButtonVariants}
                     whileHover="hover"
                     whileTap="tap"
                  >
@@ -85,7 +83,7 @@ const ProjectCard = ({ project }) => {
                     rel="noopener noreferrer"
                     className="project-link-icon"
                     aria-label={`Source code for ${project.title}`}
-                    variants={iconButtonVariants} // Reuse variant
+                    variants={iconButtonVariants}
                     whileHover="hover"
                     whileTap="tap"
                  >
@@ -105,8 +103,7 @@ const ProjectCard = ({ project }) => {
               key={index}
               className="project-tag"
               variants={tagVariants}
-              initial="rest" // Needs initial state here too
-              // Apply project-specific color if needed, otherwise use default
+              initial="rest"
               style={{
                  backgroundColor: project.color ? `${project.color}20` : 'rgba(0, 162, 255, 0.1)',
                  color: project.color || 'var(--primary-accent)',

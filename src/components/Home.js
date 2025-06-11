@@ -2,18 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaArrowDown } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-import { AnimatedTextCharacter } from './AnimatedText'; // Import the component
+import { AnimatedTextCharacter } from './AnimatedText';
 import '../styles/Home.css';
 
 const Home = () => {
 
-  // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        delay: 2.0, // Start after header animation
+        delay: 2.0,
         staggerChildren: 0.2,
       },
     },
@@ -50,7 +49,7 @@ const Home = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.5 } // Stagger after other items
+      transition: { staggerChildren: 0.15, delayChildren: 0.5 }
     }
   };
 
@@ -69,14 +68,13 @@ const Home = () => {
         transition: { delay: 3.5, duration: 0.8, ease: "easeOut" }
      },
      animate: {
-        y: [0, 10, 0], // Bouncing effect
+        y: [0, 10, 0],
         transition: { duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }
      }
   }
 
   return (
     <section id="home" className="home-section">
-      {/* Optional: Add subtle gradient overlay specific to home */}
       <div className="home-gradient-overlay"></div>
 
       <div className="container home-container">
@@ -167,7 +165,7 @@ const Home = () => {
         <motion.a href="#about" className="scroll-indicator"
             variants={scrollIndicatorVariants}
             initial="hidden"
-            animate={["visible", "animate"]} // Apply both visibility and bounce
+            animate={["visible", "animate"]}
             aria-label="Scroll down to About section"
         >
             <FaArrowDown />

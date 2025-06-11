@@ -8,7 +8,7 @@ const ParticlesBg = () => {
   const mouse = useRef({ x: undefined, y: undefined });
 
   const particleConfig = {
-    count: 400, // Number of particles
+    count: 400,
     connectionDistance: 200,
     particleSpeed: 0.3,
     particleSize: 1.5,
@@ -41,7 +41,6 @@ const ParticlesBg = () => {
     }
 
     update(canvas, mousePos) {
-       // Mouse interaction - repel
       if (mousePos.x !== undefined && mousePos.y !== undefined) {
         let dx = mousePos.x - this.x;
         let dy = mousePos.y - this.y;
@@ -49,9 +48,7 @@ const ParticlesBg = () => {
         let forceDirectionX = dx / distance;
         let forceDirectionY = dy / distance;
         let maxDistance = particleConfig.mouseInteractionRadius;
-        // Calculate force based on distance (stronger closer)
         let force = (maxDistance - distance) / maxDistance;
-        // Ensure force is non-negative
          if (force < 0) force = 0;
         let directionX = (forceDirectionX * force * this.density * particleConfig.mouseRepelForce);
         let directionY = (forceDirectionY * force * this.density * particleConfig.mouseRepelForce);
@@ -62,13 +59,11 @@ const ParticlesBg = () => {
         }
       }
 
-      // Wall collision
       if (this.x + this.size > canvas.width || this.x - this.size < 0) {
         this.speedX = -this.speedX;
       }
       if (this.y + this.size > canvas.height || this.y - this.size < 0) {
         this.speedY = -this.speedY;
-        // Prevent sticking to top/bottom
          if (this.y + this.size > canvas.height) this.y = canvas.height - this.size;
          if (this.y - this.size < 0) this.y = this.size;
       }
@@ -105,13 +100,13 @@ const ParticlesBg = () => {
 
         if (distance < particleConfig.connectionDistance) {
           const opacity = 1 - distance / particleConfig.connectionDistance;
-          ctx.globalAlpha = opacity * 0.5; // Make lines very subtle
+          ctx.globalAlpha = opacity * 0.5;
           ctx.beginPath();
           ctx.moveTo(particles[a].x, particles[a].y);
           ctx.lineTo(particles[b].x, particles[b].y);
           ctx.stroke();
           ctx.closePath();
-          ctx.globalAlpha = 1.0; // Reset global alpha
+          ctx.globalAlpha = 1.0;
         }
       }
     }
@@ -121,8 +116,8 @@ const ParticlesBg = () => {
     const canvas = canvasRef.current;
     if (canvas) {
       canvas.width = window.innerWidth;
-      canvas.height = document.documentElement.scrollHeight; // Full document height
-      initParticles(canvas); // Re-initialize particles on resize
+      canvas.height = document.documentElement.scrollHeight;
+      initParticles(canvas);
     }
   }, [initParticles]);
 
@@ -131,11 +126,9 @@ const ParticlesBg = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    // Check if canvas size needs update due to scroll height change
     const currentHeight = document.documentElement.scrollHeight;
     if (canvas.height !== currentHeight) {
        canvas.height = currentHeight;
-       // Optionally re-initialize if needed, or just let particles adapt
     }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -153,7 +146,7 @@ const ParticlesBg = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    resizeCanvas(); // Initial size set
+    resizeCanvas();
 
     window.addEventListener('resize', resizeCanvas);
     document.addEventListener('mousemove', handleMouseMove);

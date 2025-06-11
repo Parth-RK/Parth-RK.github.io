@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Add Router imports
 
-// Import Components
 import Header from './components/Header';
 import Home from './components/Home';
 import About from './components/About';
@@ -15,7 +14,6 @@ import ParticlesBg from './components/ParticlesBg';
 
 import TicTacToe from './components/fun-zone/TicTacToe';
 
-// Import Global Styles
 import './styles/App.css';
 
 function App() {

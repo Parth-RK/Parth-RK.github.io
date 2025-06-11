@@ -14,11 +14,11 @@ const Overlay = () => {
   const textVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
-      opacity: [0, 1, 1, 0], // Fade in, stay, fade out
-      scale: [0.8, 1.1, 1, 0.8], // Scale up, settle, scale down
+      opacity: [0, 1, 1, 0],
+      scale: [0.8, 1.1, 1, 0.8],
       transition: {
-        duration: 1.5, // Total duration for the text animation
-        times: [0, 0.3, 0.8, 1], // Timing for opacity/scale stages
+        duration: 1.5,
+        times: [0, 0.3, 0.8, 1],
         ease: "easeInOut"
       }
     }
@@ -30,7 +30,7 @@ const Overlay = () => {
       variants={overlayVariants}
       initial="hidden"
       animate="visible"
-      style={{ pointerEvents: 'none' }} // Ensure it doesn't block interaction after fade
+      style={{ pointerEvents: 'none' }}
     >
       <div className="overlay-background"></div>
       <motion.div
@@ -40,8 +40,6 @@ const Overlay = () => {
         animate="visible"
       >
         <span className="loading-initials">PRK</span>
-         {/* Optional: Add a subtle loading indicator if desired */}
-         {/* <div className="loading-spinner"></div> */}
       </motion.div>
     </motion.div>
   );

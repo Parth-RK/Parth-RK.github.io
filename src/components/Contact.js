@@ -25,14 +25,6 @@ const Contact = () => {
 
     try {
       console.log("Form Data Submitted:", formData);
-      // Replace with actual submission logic (e.g., using fetch to an API endpoint)
-      // Example using fetch:
-      // const response = await fetch('/api/contact', { // Your API endpoint
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify(formData),
-      // });
-      // if (!response.ok) throw new Error('Network response was not ok');
 
       await new Promise(resolve => setTimeout(resolve, 1500));
 
@@ -141,8 +133,7 @@ const Contact = () => {
           {/* Contact Form Side */}
           <motion.div className="contact-form-wrapper glass-card" variants={formVariants}>
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
-               {/* Status Message Area */}
-                <div className="form-status-container"> {/* Wrapper for layout */}
+                <div className="form-status-container">
                     <AnimatePresence>
                         {submitStatus === 'success' && (
                         <motion.div
