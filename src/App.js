@@ -43,10 +43,10 @@ function App() {
                 <Home />
                 <About />
                 <Projects />
-                <FunZoneLanding />
                 <Contact />
               </main>
             } />
+            <Route path="/fun-zone" element={<FunZoneLanding />} /> 
             <Route path="/fun-zone/tic-tac-toe" element={<TicTacToe />} />
           </Routes>
 
