@@ -28,11 +28,11 @@ const Header = () => {
   }, [menuOpen]);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'Home', href: '/#home' },
+    { name: 'About', href: '/#about' },
+    { name: 'Projects', href: '/#projects' },
     { name: 'Fun Zone', href: '/fun-zone' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   const headerVariants = {
@@ -81,7 +81,7 @@ const Header = () => {
     >
       <div className="header-container container">
         <motion.a
-          href="#home"
+          href="/#home"
           className="logo"
           variants={logoVariants}
           whileHover="hover"
