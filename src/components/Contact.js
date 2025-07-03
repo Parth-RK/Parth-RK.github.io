@@ -23,14 +23,29 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    const scriptURL = process.env.REACT_APP_CONTACT_FORM_API;
+
     try {
-      console.log("Form Data Submitted:", formData);
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {},
+        body: JSON.stringify(formData),
+        redirect: 'follow',
+      });
 
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setSubmitStatus(null), 5000);
+      if (response.ok) {
+        const result = await response.json();
+        if (result.result === 'success') {
+            setSubmitStatus('success');
+            setFormData({ name: '', email: '', message: '' });
+            setTimeout(() => setSubmitStatus(null), 5000);
+        } else {
+            throw new Error('Script reported an issue: ' + (result.message || 'Unknown error'));
+        }
+      } else {
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
     } catch (error) {
       console.error("Submission Error:", error);
       setSubmitStatus('error');
@@ -38,7 +53,7 @@ const Contact = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }; 
 
   const containerVariants = {
     hidden: {},
