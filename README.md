@@ -38,6 +38,58 @@ This is a personal portfolio website built with React.js to showcase my skills, 
    npm install
    ```
 
+3. Environment Variables
+   create a .env file and add the following to it
+   ```
+   REACT_APP_CONTACT_FORM_API='<Google-Appscript-Web-App-URL>'
+   ```
+   AppsScript URL is to collect the contact form responses to a google sheet or send directly to your inbox.
+   This script saves the form messages and send you an email notification as well.
+   code.gs
+   ```
+   function doPost(e) {
+      try {
+         var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("FormResponses");
+         var data = JSON.parse(e.postData.contents);
+
+         // Basic validation to prevent errors
+         if (!data.name || !data.email || !data.message) {
+            throw new Error("Missing required form fields.");
+         }
+         
+         sheet.appendRow([
+            new Date(),
+            data.name,
+            data.email,
+            data.message
+         ]);
+
+         MailApp.sendEmail({
+            to: "<username>@<email>.com",
+            subject: `New Message from ${data.name}`,
+            htmlBody: `
+            <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Email:</strong> ${data.email}</p>
+            <p><strong>Message:</strong></p>
+            <p>${data.message.replace(/\n/g, '<br>')}</p> <!-- Sanitize message for HTML -->
+            <hr><p style="font-size:12px;color:#888;">via Portfolio Site</p>
+            `
+         });
+
+         // THIS IS THE CORRECTED RETURN STATEMENT
+         return ContentService
+            .createTextOutput(JSON.stringify({ result: 'success', message: 'Data received successfully.' }))
+            .setMimeType(ContentService.MimeType.JSON);
+
+      } catch (error) {
+         // Return a JSON error response if something goes wrong
+         return ContentService
+            .createTextOutput(JSON.stringify({ result: 'error', message: error.toString() }))
+            .setMimeType(ContentService.MimeType.JSON);
+      }
+   }
+   ```
+
 ## Usage
 
 ### Development Server
