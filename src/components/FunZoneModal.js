@@ -4,13 +4,25 @@ import { FaTimes, FaArrowLeft } from 'react-icons/fa';
 import FunZoneLanding from './FunZoneLanding';
 import '../styles/FunZoneModal.css';
 
+// Lazy load game components
 const TicTacToe = React.lazy(() => import('./fun-zone/TicTacToe'));
+const Browser = React.lazy(() => import('./fun-zone/browser'));
+
+const GAME_COMPONENTS = {
+  'tic-tac-toe': TicTacToe,
+  'internet': Browser,
+  // New games here: 'game-id': Component
+};
 
 const FunZoneModal = ({ onClose }) => {
   const [currentView, setCurrentView] = useState('landing');
 
   const handleGameSelect = (gameId) => {
-    setCurrentView(gameId);
+    if (GAME_COMPONENTS[gameId]) {
+      setCurrentView(gameId);
+    } else {
+      console.warn(`Game component for ${gameId} not found.`);
+    }
   };
 
   const handleBackToLanding = () => {
@@ -22,6 +34,8 @@ const FunZoneModal = ({ onClose }) => {
     visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
     exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } }
   };
+
+  const CurrentGameComponent = GAME_COMPONENTS[currentView];
 
   return (
     <motion.div 
@@ -44,7 +58,7 @@ const FunZoneModal = ({ onClose }) => {
 
         <div className="fun-zone-scroll-container">
           <AnimatePresence mode="wait">
-            {currentView === 'landing' && (
+            {currentView === 'landing' ? (
               <motion.div 
                 key="landing"
                 initial={{ opacity: 0, x: -20 }}
@@ -54,18 +68,16 @@ const FunZoneModal = ({ onClose }) => {
               >
                 <FunZoneLanding onGameSelect={handleGameSelect} />
               </motion.div>
-            )}
-
-            {currentView === 'tic-tac-toe' && (
+            ) : (
               <motion.div 
-                key="tic-tac-toe"
+                key={currentView}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 className="fun-zone-view game-view"
               >
-                <Suspense fallback={<div className="loading-game">Loading Game...</div>}>
-                  <TicTacToe onBack={handleBackToLanding} />
+                <Suspense fallback={<div className="loading-game">Loading...</div>}>
+                  {CurrentGameComponent && <CurrentGameComponent onBack={handleBackToLanding} />}
                 </Suspense>
               </motion.div>
             )}

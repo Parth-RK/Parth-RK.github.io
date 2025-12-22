@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FaGamepad, FaShapes, FaPaintBrush, FaBrain } from 'react-icons/fa';
+import { FaGamepad, FaShapes, FaPaintBrush, FaBrain, FaGlobeAmericas } from 'react-icons/fa';
 import '../styles/FunZoneLanding.css';
 
 const funZoneItems = [
@@ -9,6 +9,13 @@ const funZoneItems = [
     title: 'Quantum Tic-Tac-Toe',
     description: 'Classic game, reimagined with glowing visuals and smooth animations. Only the last 3 moves persist!',
     icon: <FaGamepad />,
+    status: 'Play Now'
+  },
+  {
+    id: 'internet',
+    title: 'Internet',
+    description: 'A tool that fetches results from the web.',
+    icon: <FaGlobeAmericas />,
     status: 'Play Now'
   },
   {
