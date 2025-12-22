@@ -1,24 +1,22 @@
 /* src/styles/ProjectCard.css */
 .project-card {
-  /* Base styles from .glass-card in App.css */
-  overflow: hidden; /* Keep image corners rounded */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 100%; /* Ensure cards in a row have same height if needed */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add subtle transform transition */
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-   /* Hover style from .glass-card:hover */
-   transform: translateY(-8px); /* Lift effect */
+   transform: translateY(-8px);
 }
 
 .project-image-container {
-  position: relative; /* For overlay positioning */
+  position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9; /* Maintain consistent image aspect ratio */
-  overflow: hidden; /* Clip image zoom */
-  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0; /* Round top corners */
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
 }
 
 .project-image {
@@ -30,17 +28,17 @@
 
 .project-card:hover .project-image {
   transform: scale(1.1);
-  filter: brightness(0.7); /* Dim image on hover to show overlay */
+  filter: brightness(0.7);
 }
 
 .project-hover-overlay {
   position: absolute;
-  inset: 0; /* Cover entire image container */
-  background: rgba(5, 8, 22, 0.6); /* Dark overlay */
+  inset: 0;
+  background: rgba(5, 8, 22, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0; /* Hidden by default, controlled by variants */
+  opacity: 0;
 }
 
 .project-links {
@@ -50,17 +48,16 @@
 
 .project-link-icon {
   font-size: var(--text-3xl);
-  color: var(--text-light); /* Start white */
+  color: var(--text-light);
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
-/* Hover handled by variants */
 
 
 .project-content {
   padding: var(--space-5);
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Allow content to push tags down */
+  flex-grow: 1;
 }
 
 .project-title {
@@ -77,14 +74,14 @@
   color: var(--text-medium);
   line-height: 1.6;
   margin-bottom: var(--space-4);
-  flex-grow: 1; /* Takes available space */
+  flex-grow: 1;
 }
 
 .project-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-top: auto; /* Push tags to the bottom */
+  margin-top: auto;
 }
 
 .project-tag {
@@ -93,7 +90,6 @@
   font-weight: 500;
   padding: var(--space-1) var(--space-3);
   border-radius: var(--border-radius-sm);
-  border: 1px solid; /* Border color set inline */
-  /* Background and text color set inline */
+  border: 1px solid;
   transition: transform var(--transition-fast), opacity var(--transition-fast);
 }

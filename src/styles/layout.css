@@ -33,7 +33,6 @@ body {
   border-radius: var(--border-radius-sm);
 }
 
-/* Grid layouts */
 .grid {
   display: grid;
   gap: var(--spacing-lg);
@@ -47,7 +46,6 @@ body {
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* Responsive grid */
 @media (max-width: 992px) {
   .grid-3 {
     grid-template-columns: repeat(2, 1fr);

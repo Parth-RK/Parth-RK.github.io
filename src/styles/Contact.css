@@ -3,8 +3,8 @@
   background:
     radial-gradient(circle at 90% 10%, rgba(138, 43, 226, 0.1) 0%, transparent 40%),
     radial-gradient(circle at 10% 90%, rgba(0, 162, 255, 0.1) 0%, transparent 40%),
-    var(--background-dark); /* Base background */
-  padding-bottom: var(--space-24); /* Extra padding at the bottom */
+    var(--background-dark);
+  padding-bottom: var(--space-24);
   border-top: var(--border-width) solid var(--border-color);
 }
 
@@ -14,7 +14,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-8);
-  align-items: start; /* Align items to the top */
+  align-items: start;
 }
 
 
@@ -61,14 +61,14 @@
 .contact-detail-icon {
   font-size: var(--text-xl);
   color: var(--primary-accent);
-  flex-shrink: 0; /* Prevent icon shrinking */
+  flex-shrink: 0;
 }
 
 .contact-detail-text,
 .contact-detail-link {
   font-size: var(--text-base);
   color: var(--text-medium);
-  word-break: break-word; /* Prevent long links overflowing */
+  word-break: break-word;
   transition: color var(--transition-fast);
 }
 
@@ -82,9 +82,8 @@
   gap: var(--space-6);
 }
 
-/* Form status messages */
 .form-status-container {
-  min-height: 3rem; /* Reserve space to prevent layout shifts */
+  min-height: 3rem;
   display: flex;
   align-items: center;
 }
@@ -101,7 +100,7 @@
 
 .form-status-message.success {
   background-color: rgba(0, 255, 100, 0.1);
-  color: #4caf50; /* Keep consistent color */
+  color: #4caf50;
   border-color: rgba(76, 175, 80, 0.5);
 }
 
@@ -117,15 +116,14 @@
 }
 
 
-/* Floating Label Input Styling */
 .form-group {
   position: relative;
 }
 
 .form-control {
   width: 100%;
-  padding: var(--space-4) var(--space-4) var(--space-2); /* Adjust padding for label */
-  background-color: rgba(5, 8, 22, 0.7); /* Darker input bg */
+  padding: var(--space-4) var(--space-4) var(--space-2);
+  background-color: rgba(5, 8, 22, 0.7);
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--border-radius-md);
   color: var(--text-light);
@@ -134,7 +132,6 @@
   transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
-/* Apply focus styles via motion */
 
 .form-label {
   position: absolute;
@@ -144,20 +141,17 @@
   font-size: var(--text-base);
 }
 
-/* Name and email labels - centered vertically */
 .form-control:not(textarea) + .form-label {
   top: 50%;
   left: var(--space-4);
   transform: translateY(-50%);
 }
 
-/* Textarea label - remains at top */
 textarea.form-control + .form-label {
   top: var(--space-4);
   left: var(--space-4);
 }
 
-/* Floating label effect for inputs (name/email) */
 .form-control:not(textarea):focus + .form-label,
 .form-control:not(textarea):not(:placeholder-shown) + .form-label {
   top: var(--space-1);
@@ -166,7 +160,6 @@ textarea.form-control + .form-label {
   color: var(--primary-accent);
 }
 
-/* Floating label effect for textarea (message) */
 textarea.form-control:focus + .form-label,
 textarea.form-control:not(:placeholder-shown) + .form-label {
   top: var(--space-1);
@@ -175,16 +168,15 @@ textarea.form-control:not(:placeholder-shown) + .form-label {
 }
 
 .form-control:focus + .form-label {
-    color: var(--primary-glow); /* Brighter on focus */
+    color: var(--primary-glow);
 }
 
 
 textarea.form-control {
-  resize: vertical; /* Allow vertical resize only */
+  resize: vertical;
   min-height: 120px;
 }
 
-/* Submit Button */
 .submit-button {
   display: flex;
   align-items: center;
@@ -202,12 +194,11 @@ textarea.form-control {
   border: none;
   cursor: pointer;
   transition: background var(--transition-medium), box-shadow var(--transition-medium), opacity var(--transition-fast);
-  align-self: flex-start; /* Align button to start */
+  align-self: flex-start;
 }
 
 .submit-button:disabled {
     cursor: not-allowed;
-    /* Opacity handled by variants */
 }
 
 .spinner {
@@ -227,7 +218,6 @@ textarea.form-control {
   to { transform: rotate(360deg); }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .contact-grid {
     gap: var(--space-6);

@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Add Router imports
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Home from './components/Home';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import FunZoneLanding from './components/FunZoneLanding'; 
 import Footer from './components/Footer';
 import Overlay from './components/Overlay';
 import ParticlesBg from './components/ParticlesBg';
-
-import TicTacToe from './components/fun-zone/TicTacToe';
+import ScrollToHashElement from './components/ScrollToHashElement';
 
 import './styles/App.css';
 
+const FunZoneModal = React.lazy(() => import('./components/FunZoneModal'));
+
 function App() {
   const [loading, setLoading] = useState(true);
+  const [showFunZone, setShowFunZone] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToHashElement />
       <div className="App">
           <AnimatePresence>
               {loading && <Overlay />}
@@ -35,7 +37,7 @@ function App() {
 
           <ParticlesBg />
 
-          {!loading && <Header />}
+          {!loading && <Header onOpenFunZone={() => setShowFunZone(true)} />}
 
           <Routes>
             <Route path="/" element={
@@ -46,9 +48,15 @@ function App() {
                 <Contact />
               </main>
             } />
-            <Route path="/#/fun-zone" element={<FunZoneLanding />} /> 
-            <Route path="/#/fun-zone/tic-tac-toe" element={<TicTacToe />} />
           </Routes>
+
+          <AnimatePresence>
+            {showFunZone && (
+              <Suspense fallback={null}>
+                <FunZoneModal onClose={() => setShowFunZone(false)} />
+              </Suspense>
+            )}
+          </AnimatePresence>
 
           {!loading && <Footer />}
       </div>

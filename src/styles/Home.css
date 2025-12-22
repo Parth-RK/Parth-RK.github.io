@@ -124,9 +124,6 @@
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
-/* Hover state handled by framer-motion variants */
-
-/* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
   bottom: var(--space-8);
@@ -144,7 +141,6 @@
 }
 
 
-/* Responsive */
 @media (max-width: 768px) {
   .hero-subtitle { font-size: var(--text-xl); }
   .hero-description { font-size: var(--text-base); }

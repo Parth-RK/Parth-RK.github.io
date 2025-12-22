@@ -6,14 +6,14 @@
   width: 100%;
   z-index: var(--z-header);
   padding: var(--space-3) 0;
-  background-color: rgba(5, 8, 22, 0.8); /* Start slightly transparent */
-  backdrop-filter: none; /* Start without blur */
-  border-bottom: var(--border-width) solid transparent; /* Start transparent border */
+  background-color: rgba(5, 8, 22, 0.8);
+  backdrop-filter: none;
+  border-bottom: var(--border-width) solid transparent;
   transition: background-color var(--transition-medium), backdrop-filter var(--transition-medium), border-color var(--transition-medium), padding var(--transition-medium);
 }
 
 .header.scrolled {
-  background-color: rgba(16, 22, 47, 0.85); /* More opaque when scrolled */
+  background-color: rgba(16, 22, 47, 0.85);
   backdrop-filter: var(--blur-effect);
   border-bottom-color: var(--border-color);
   padding: var(--space-2) 0;
@@ -36,9 +36,8 @@
   transition: text-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
-/* Desktop Navigation */
 .nav-desktop {
-  display: none; /* Hidden by default, shown on larger screens */
+  display: none;
 }
 
 .nav-menu-desktop {
@@ -84,32 +83,30 @@
 .nav-link-desktop:hover,
 .nav-link-desktop:focus {
   color: var(--primary-glow);
-  outline: none; /* Remove default focus outline if using custom */
+  outline: none;
 }
 
 
-/* Mobile Menu Button */
 .mobile-menu-btn {
-  display: block; /* Shown by default, hidden on larger screens */
+  display: block;
   font-size: var(--text-2xl);
   color: var(--text-light);
-  z-index: calc(var(--z-header) + 2); /* Above mobile menu background */
+  z-index: calc(var(--z-header) + 2);
   padding: var(--space-2);
-  line-height: 0; /* Prevent extra space */
+  line-height: 0;
   background-color: transparent;
   border: none;
 }
 
-/* Mobile Menu */
 .nav-mobile {
   position: fixed;
   top: 0;
   right: 0;
-  width: min(75%, 300px); /* Responsive width */
+  width: min(75%, 300px);
   height: 100vh;
-  background-color: rgba(16, 22, 47, 0.95); /* Darker, more opaque */
+  background-color: rgba(16, 22, 47, 0.95);
   backdrop-filter: var(--blur-effect);
-  z-index: calc(var(--z-header) + 1); /* Above header, below button */
+  z-index: calc(var(--z-header) + 1);
   padding: var(--space-16) var(--space-6) var(--space-6);
   display: flex;
   flex-direction: column;
@@ -123,7 +120,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
-    z-index: var(--z-header); /* Below nav, above content */
+    z-index: var(--z-header);
 }
 
 
@@ -155,7 +152,6 @@
 }
 
 
-/* Responsive Breakpoints */
 @media (min-width: 768px) {
   .nav-desktop {
     display: block;
@@ -164,6 +160,6 @@
     display: none;
   }
   .nav-mobile, .mobile-menu-backdrop {
-    display: none; /* Ensure mobile menu is fully hidden */
+    display: none;
   }
 }

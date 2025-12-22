@@ -6,7 +6,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 
 const MotionLink = motion(Link);
 
-const Header = () => {
+const Header = ({ onOpenFunZone }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -34,8 +34,8 @@ const Header = () => {
     { name: 'Home', href: '/#home' },
     { name: 'About', href: '/#about' },
     { name: 'Projects', href: '/#projects' },
-    { name: 'Fun Zone', href: '/fun-zone' },
     { name: 'Contact', href: '/#contact' },
+    { name: 'Fun Zone', action: 'fun-zone' },
   ];
 
   const headerVariants = {
@@ -98,15 +98,28 @@ const Header = () => {
           <ul className="nav-menu-desktop">
             {navItems.map((item) => (
               <motion.li key={item.name} className="nav-item-desktop">
-                <MotionLink
-                  to={item.href}
-                  className="nav-link-desktop"
-                  variants={navLinkVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                >
-                  {item.name}
-                </MotionLink>
+                {item.action === 'fun-zone' ? (
+                  <motion.button
+                    className="nav-link-desktop"
+                    onClick={onOpenFunZone}
+                    variants={navLinkVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                  >
+                    {item.name}
+                  </motion.button>
+                ) : (
+                  <MotionLink
+                    to={item.href}
+                    className="nav-link-desktop"
+                    variants={navLinkVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
+                    {item.name}
+                  </MotionLink>
+                )}
               </motion.li>
             ))}
           </ul>
@@ -125,7 +138,7 @@ const Header = () => {
                         <FaTimes />
                     </motion.div>
                 ) : (
-                    <motion.div key="bars" initial={{ opacity: 0, rotate: 90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: -90 }}>
+                    <motion.div key="bars" initial={{ opacity: 0, rotate: -90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: 90 }}>
                         <FaBars />
                     </motion.div>
                 )}
@@ -155,13 +168,26 @@ const Header = () => {
                         <ul className="nav-menu-mobile">
                         {navItems.map((item) => (
                             <motion.li key={item.name} variants={mobileLinkVariants}>
-                            <Link
-                                to={item.href}
-                                className="nav-link-mobile"
-                                onClick={() => setMenuOpen(false)} // Close menu on link click
-                            >
-                                {item.name}
-                            </Link>
+                            {item.action === 'fun-zone' ? (
+                                <button
+                                    className="nav-link-mobile"
+                                    onClick={() => {
+                                        setMenuOpen(false);
+                                        onOpenFunZone();
+                                    }}
+                                    style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left', padding: '1rem 2rem' }}
+                                >
+                                    {item.name}
+                                </button>
+                            ) : (
+                                <Link
+                                    to={item.href}
+                                    className="nav-link-mobile"
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    {item.name}
+                                </Link>
+                            )}
                             </motion.li>
                         ))}
                         </ul>

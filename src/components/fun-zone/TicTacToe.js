@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from 'react';
-import styled, { keyframes, createGlobalStyle, ThemeProvider } from 'styled-components';
+import styled, { keyframes, ThemeProvider } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const theme = {
     primary: '#00A380',
     accent: '#4cyanff', 
     glow: '#00f7ff',
-    background: '#0a0f1f',
-    backgroundGradient: 'linear-gradient(135deg, #0a0f1f 0%, #1a1f3f 100%)',
+    background: 'transparent',
+    backgroundGradient: 'none',
     text: '#e0e0ff',
     textDim: '#a0a0cc',
     cellBg: 'rgba(26, 31, 63, 0.7)',
@@ -23,62 +23,53 @@ const theme = {
     fontFamily: "'Orbitron', sans-serif",
 };
 
-const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: ${({ theme }) => theme.fontFamily};
-    color: ${({ theme }) => theme.text};
-    background: ${({ theme }) => theme.background};
-    background-image: ${({ theme }) => theme.backgroundGradient};
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    padding: 20px; // Add some padding for smaller screens
-  }
-`;
-
 // --- 2. Styled Components Definitions ---
 
 const GameWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: clamp(20px, 5vw, 40px); // Responsive padding
+  justify-content: center;
+  padding: clamp(10px, 3vw, 20px);
   background: rgba(10, 15, 31, 0.6);
   border-radius: 20px;
   border: 1px solid ${({ theme }) => theme.cellBorder};
   box-shadow: 0 0 30px rgba(0, 247, 255, 0.1);
-  width: 100%;
-  max-width: 1000px; // Increased from 550px to fit title better
-  margin: 60px auto 20px; // Added top margin for header clearance
+  width: 95%;
+  height: 90vh; /* Fixed height relative to viewport */
+  max-height: 900px;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden; /* Prevent content from spilling out */
 `;
 
 const Header = styled(motion.header)`
   text-align: center;
-  margin-bottom: clamp(20px, 4vw, 30px);
+  margin-bottom: clamp(5px, 1.5vw, 15px); /* Reduced margin */
+  flex-shrink: 1; /* Allow shrinking */
+  min-height: 0; /* Allow flex item to shrink below content size */
+  overflow: hidden;
 
   h1 {
-    font-size: clamp(2rem, 6vw, 2.8rem);
+    font-size: clamp(1.2rem, 4vw, 2.2rem); /* Reduced max font size */
     color: ${({ theme }) => theme.accent};
     text-shadow: 0 0 10px ${({ theme }) => theme.glow};
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-weight: 700;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   p {
-    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    font-size: clamp(0.7rem, 1.8vw, 0.9rem);
     color: ${({ theme }) => theme.textDim};
     max-width: 450px;
-    line-height: 1.5;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 `;
 
@@ -90,11 +81,11 @@ const BoardContainer = styled(motion.div)`
   background-color: ${({ theme }) => theme.cellBorder};
   padding: 10px;
   border-radius: 10px;
-  width: 100%;
-  max-width: 380px;
-  aspect-ratio: 1 / 1;
-  margin-bottom: clamp(15px, 3vw, 25px);
+  height: min(45vh, 45vw); /* Responsive height/width */
+  width: min(45vh, 45vw);
+  margin-bottom: clamp(10px, 2vw, 20px);
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
 `;
 
 const neonGlow = (color) => keyframes`
@@ -107,7 +98,7 @@ const CellWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(2rem, 12vw, 4rem);
+  font-size: clamp(1.5rem, 8vw, 3rem);
   cursor: pointer;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -144,8 +135,9 @@ const StatusArea = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-bottom: clamp(15px, 4vw, 25px);
-  gap: clamp(10px, 2vw, 15px);
+  margin-bottom: clamp(10px, 3vw, 20px); /* Reduced margin */
+  gap: clamp(5px, 1.5vw, 10px); /* Reduced gap */
+  flex-shrink: 0;
 `;
 
 const Message = styled(motion.div)`
@@ -298,7 +290,7 @@ const initialPlayerMoves = { X: [], O: [] };
 const initialHistory = [];
 const initialScores = { X: 0, O: 0 };
 
-const TicTacToe = () => {
+const TicTacToe = ({ onBack }) => {
   const [board, setBoard] = useState(initialBoard);
   const [playerMoves, setPlayerMoves] = useState(initialPlayerMoves);
   const [currentPlayer, setCurrentPlayer] = useState('X');
@@ -433,7 +425,6 @@ const TicTacToe = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
       <GameWrapper
         variants={containerVariants}
         initial="hidden"
@@ -500,16 +491,3 @@ const TicTacToe = () => {
 };
 
 export default TicTacToe;
-
-const footerStyle = document.createElement('style');
-footerStyle.textContent = `
-  footer {
-    width: 100% !important;
-    position: relative !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    margin-top: 30px !important;
-  }
-`;
-document.head.appendChild(footerStyle);

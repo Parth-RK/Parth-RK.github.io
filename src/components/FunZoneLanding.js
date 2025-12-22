@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FaGamepad, FaShapes, FaPaintBrush, FaBrain } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import '../styles/FunZoneLanding.css';
 
 const funZoneItems = [
@@ -10,7 +9,6 @@ const funZoneItems = [
     title: 'Quantum Tic-Tac-Toe',
     description: 'Classic game, reimagined with glowing visuals and smooth animations. Only the last 3 moves persist!',
     icon: <FaGamepad />,
-    path: '/fun-zone/tic-tac-toe',
     status: 'Play Now'
   },
   {
@@ -18,7 +16,6 @@ const funZoneItems = [
     title: 'Gravity Lab',
     description: 'A mini 2D physics sandbox. Drag, drop, and watch simple shapes interact.',
     icon: <FaShapes />,
-    path: '/fun-zone/physics-sandbox',
     status: 'Concept'
   },
   {
@@ -26,7 +23,6 @@ const funZoneItems = [
     title: 'Pixel Canvas',
     description: 'Create unique generative art with interactive brushes and particle effects.',
     icon: <FaPaintBrush />,
-    path: '/fun-zone/generative-art',
     status: 'Concept'
   },
    {
@@ -34,12 +30,11 @@ const funZoneItems = [
     title: 'Circuit Match',
     description: 'Test your memory matching futuristic icons in this sleek card game.',
     icon: <FaBrain />,
-    path: '/fun-zone/memory-game',
     status: 'Concept'
   },
 ];
 
-const FunZoneLanding = () => {
+const FunZoneLanding = ({ onGameSelect }) => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
 
@@ -129,9 +124,12 @@ const FunZoneLanding = () => {
                     whileHover="hover"
                     whileTap="tap"
                   >
-                    <Link to={item.path} className="game-card-button">
+                    <button 
+                      onClick={() => onGameSelect(item.id)} 
+                      className="game-card-button"
+                    >
                       {item.status}
-                    </Link>
+                    </button>
                   </motion.div>
                 ) : (
                   <motion.div

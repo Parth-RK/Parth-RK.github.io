@@ -1,8 +1,8 @@
 /* src/styles/Footer.css */
 .footer {
-  background-color: rgba(5, 8, 22, 0.8); /* Slightly transparent dark */
+  background-color: rgba(5, 8, 22, 0.8);
   padding: var(--space-8) 0 var(--space-6);
-  margin-top: var(--space-12); /* Add space above footer */
+  margin-top: var(--space-12);
   border-top: var(--border-width) solid var(--border-color);
   text-align: center;
 }
@@ -25,7 +25,6 @@
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
-/* Hover handled by variants */
 
 .footer-copy {
   font-size: var(--text-sm);

@@ -17,7 +17,7 @@
   font-size: var(--text-sm);
   font-weight: 600;
   color: var(--text-medium);
-  background-color: rgba(26, 35, 69, 0.5); /* Semi-transparent base */
+  background-color: rgba(26, 35, 69, 0.5);
   padding: var(--space-2) var(--space-5);
   border-radius: var(--border-radius-md);
   border: 1px solid transparent;
@@ -25,8 +25,8 @@
   letter-spacing: 1px;
   cursor: pointer;
   transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
-  position: relative; /* For the active indicator */
-  overflow: hidden; /* Contain indicator */
+  position: relative;
+  overflow: hidden;
 }
 
 .filter-btn:hover {
@@ -37,34 +37,29 @@
 
 .filter-btn.active {
   color: var(--primary-glow);
-  /* background-color: rgba(0, 246, 255, 0.15); */
-  /* border-color: var(--primary-glow); */
-  background-color: transparent; /* Let indicator show background */
-  /* box-shadow: 0 0 15px var(--shadow-color); */
+  background-color: transparent;
 }
 
-/* Animated underline/background for active button */
 .active-indicator {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100%; /* Full background highlight */
+    height: 100%;
     background: var(--gradient-primary);
-    border-radius: var(--border-radius-md); /* Match button */
-    z-index: -1; /* Behind the text */
+    border-radius: var(--border-radius-md);
+    z-index: -1;
     box-shadow: 0 0 10px var(--shadow-color);
 }
 
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); /* Responsive columns */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: var(--space-6);
 }
 
 
-/* Responsive */
 @media (max-width: 768px) {
   .projects-filter {
     gap: var(--space-3);
