@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/Header.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
+
+const MotionLink = motion(Link);
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -80,30 +83,30 @@ const Header = () => {
       animate="animate"
     >
       <div className="header-container container">
-        <motion.a
-          href="/#home"
+        <MotionLink
+          to="/#home"
           className="logo"
           variants={logoVariants}
           whileHover="hover"
           aria-label="Homepage"
         >
           PRK
-        </motion.a>
+        </MotionLink>
 
         {/* Desktop Navigation */}
         <nav className="nav-desktop">
           <ul className="nav-menu-desktop">
             {navItems.map((item) => (
               <motion.li key={item.name} className="nav-item-desktop">
-                <motion.a
-                  href={item.href}
+                <MotionLink
+                  to={item.href}
                   className="nav-link-desktop"
                   variants={navLinkVariants}
                   whileHover="hover"
                   whileTap="tap"
                 >
                   {item.name}
-                </motion.a>
+                </MotionLink>
               </motion.li>
             ))}
           </ul>
@@ -152,13 +155,13 @@ const Header = () => {
                         <ul className="nav-menu-mobile">
                         {navItems.map((item) => (
                             <motion.li key={item.name} variants={mobileLinkVariants}>
-                            <a
-                                href={item.href}
+                            <Link
+                                to={item.href}
                                 className="nav-link-mobile"
                                 onClick={() => setMenuOpen(false)} // Close menu on link click
                             >
                                 {item.name}
-                            </a>
+                            </Link>
                             </motion.li>
                         ))}
                         </ul>
