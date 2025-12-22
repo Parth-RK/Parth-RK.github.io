@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import '../styles/ProjectCard.css';
 
 const ProjectCard = ({ project }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
@@ -50,12 +51,34 @@ const ProjectCard = ({ project }) => {
       whileHover="hover"
       layout
     >
-      <div className="project-image-container">
+      <div className="project-image-container" style={{ backgroundColor: '#2a2a2a' }}>
         <img
           src={project.image}
           alt={project.title}
           className="project-image"
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setImageLoaded(true)}
+          style={{ 
+            opacity: imageLoaded ? 1 : 0, 
+            transition: 'opacity 0.5s ease-in-out' 
+          }}
         />
+        {!imageLoaded && (
+          <div className="image-placeholder" style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#555'
+          }}>
+            Loading...
+          </div>
+        )}
         <motion.div
           className="project-hover-overlay"
           variants={hoverOverlayVariants}

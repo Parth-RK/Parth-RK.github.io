@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import '../styles/Projects.css';
@@ -10,6 +10,7 @@ const Projects = () => {
   // Simplified filters for demo
   const filters = ["All", "Web", "Mobile", "ML/AI", "Others"];
   const [activeFilter, setActiveFilter] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(3);
 
   const allProjects = [
      {
@@ -95,6 +96,16 @@ const Projects = () => {
     ? allProjects
     : allProjects.filter(project => project.category === activeFilter);
 
+  const visibleProjects = filteredProjects.slice(0, visibleCount);
+
+  useEffect(() => {
+    setVisibleCount(3);
+  }, [activeFilter]);
+
+  const handleLoadMore = () => {
+    setVisibleCount(prev => prev + 3);
+  };
+
   const titleVariants = {
     hidden: { opacity: 0, y: -50 },
     visible: {
@@ -154,7 +165,6 @@ const Projects = () => {
               whileHover="hover"
               whileTap="tap"
             >
-                {/* Add layout animation for the active indicator */}
                 {activeFilter === filter && (
                     <motion.div className="active-indicator" layoutId="activeFilterIndicator" />
                 )}
@@ -170,11 +180,39 @@ const Projects = () => {
           key={activeFilter}
         >
             <AnimatePresence mode="sync">
-              {filteredProjects.map((project) => (
+              {visibleProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
             </AnimatePresence>
         </motion.div>
+
+        {/* Load More Button */}
+        {visibleCount < filteredProjects.length && (
+          <motion.div 
+            className="load-more-container"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            style={{ textAlign: 'center', marginTop: '40px' }}
+          >
+            <button 
+              className="load-more-btn"
+              onClick={handleLoadMore}
+              style={{
+                padding: '12px 30px',
+                fontSize: '1rem',
+                backgroundColor: 'transparent',
+                border: '2px solid var(--primary-accent)',
+                color: 'var(--primary-accent)',
+                borderRadius: '30px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              Load More
+            </button>
+          </motion.div>
+        )}
       </div>
     </motion.section>
   );
