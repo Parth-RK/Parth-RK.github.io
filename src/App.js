@@ -46,8 +46,8 @@ function App() {
                 <Contact />
               </main>
             } />
-            <Route path="#/fun-zone" element={<FunZoneLanding />} /> 
-            <Route path="#/fun-zone/tic-tac-toe" element={<TicTacToe />} />
+            <Route path="/#/fun-zone" element={<FunZoneLanding />} /> 
+            <Route path="/#/fun-zone/tic-tac-toe" element={<TicTacToe />} />
           </Routes>
 
           {!loading && <Footer />}
